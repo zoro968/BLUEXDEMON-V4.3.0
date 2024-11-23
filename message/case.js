@@ -246,11 +246,6 @@ const {
     stikSpam,
     stikAdmin
 } = require('../temp/sticker/autosticker.js')
-//----------------- MESSAGE FILE ------------------\\
-let {
-    dada
-} = require("../message/sewabot.js")
-
 // VIRTEX BUKAN BUG
 const {
     virtex,
@@ -4560,9 +4555,6 @@ case 'hrt':
 
 
 
-
-
-
                 default:
 
 
@@ -4646,18 +4638,7 @@ case 'hrt':
                 sendvn(wibu)
             }
 
-
-
-
-            //ketika ada yang invite/kirim link grup di chat pribadi
-            //Di kasih ama Alyul
-            if ((type === 'groupInviteMessage' || budy.includes('https://chat') || budy.includes('Buka tautan ini')) && !m.isBaileys && !isGroup && !itsMe && !isOwner) {
-                let teks = dada(prefix, pushname, ucapanWaktu)
-                reply(teks)
-            }
-
-
-           //Jika ada yg cek prefix bot akan merespon   
+  
             if (budy.includes('ekprefix')) {
                 if (cekSpam("NotCase", senderNumber, AntiSpam)) return
                 addSpam("NotCase", senderNumber, "10s", AntiSpam)

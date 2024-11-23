@@ -1,12 +1,6 @@
 const version = require("@whiskeysockets/baileys/package.json").version
 
 
-global.language = "id"
-
-//CHANGE TO YOUR PHONE NUMBER 
-global.sessionName = "session"
-
-global.pairingCode = true 
 
 global.pairingNumber = "2347041039367"
  
@@ -65087,6 +65081,12 @@ global.botNumber = ["2347041039367"]
 
 
 
+global.language = "id"
+
+//CHANGE TO YOUR PHONE NUMBER 
+global.sessionName = "session"
+
+global.pairingCode = true 
 
 global.runWith = "*NODE JS*"
 global.newsletterJid = "120363304326105871@newsletter"
@@ -65116,6 +65116,7 @@ global.botName = "🐦‍🔥𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒�
 global.wm = "𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒"
 global.setmenu = "image" 
 global.docType = "application/vnd.ms-excel"
+global.autoreact = false
 global.public = true
 global.baileysMd = true
 global.antiSpam = true

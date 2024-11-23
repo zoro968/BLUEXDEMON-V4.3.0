@@ -162,17 +162,20 @@ return Ehztext(`
 *➼ gitclone <link>*
 *➼ mediafire <link>*
 *➼ githubdl <link>*
-*➼*
 
       \`☛ 𝐓𝐎𝐎𝐋𝐒 𝐌𝐄𝐍𝐔 ☚\`
 *➼ vv*
 *➼ vv2*
 *➼ runtime*
 *➼ ping*
+*➼ areact*
+*➼ svcontact*
+*➼ obfuscate*
 *➼ getsession*
 *➼ join*
 *➼ sticker*
 *➼ take*
+*➼ fancy*
 
       \`☛ 𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔 ☚\`
 *➼ lyrics*
@@ -183,6 +186,11 @@ return Ehztext(`
 *➼ gemini*
 *➼ chatgpt*
 *➼ blackbox*
+
+      \`☛ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔 ☚\`
+*➼ gitstalk*
+*➼ wachannel*
+*➼ tiktokstalk*
 
       \`☛ 𝐅𝐔𝐍 𝐌𝐄𝐍𝐔 ☚\`
 *➼ love*

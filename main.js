@@ -39,7 +39,7 @@ const {getRandom, getBuffer,sleep} = require("./lib/myfunc");
 if(runWith.includes("eplit")){
 }
 const connect = require("./server.js")
-const PORT = process.env.PORT || 3000 
+const PORT = process.env.PORT || 7860 
 let d = new Date
 let locale = 'id'
 let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()

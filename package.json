@@ -15,7 +15,7 @@
  "license": "MIT",
  "dependencies": {
   "@ffmpeg-installer/ffmpeg": "^1.1.0",
-  "@whiskeysockets/baileys": "^6.7.9",
+  "@whiskeysockets/baileys": "latest",
   "@xyzteams/scapers": "^0.0.5",
   "@bochilteam/scraper": "^2.0.0",
   "acrcloud": "^1.4.0",

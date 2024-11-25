@@ -88,14 +88,15 @@ var saldo = db.data.users[sender].balance.toLocaleString()
 var saldo = db.data.users[sender].balance
 }
 return Ehztext(`
-┏━━━\`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\`
+┏━━━\`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\`━❐
 ┃■ 𝐔𝐒𝐄𝐑  :  ${pushname}
 ┃■ 𝐒𝐓𝐀𝐓𝐔𝐒 :  ${isPremium ? '𝐏𝐫𝐞𝐦𝐢𝐮𝐦':'𝐅𝐫𝐞𝐞'}
 ┃■ 𝐌𝐎𝐃𝐄 : ${publik ? "𝐏𝐮𝐛𝐥𝐢𝐜" : "𝐒𝐞𝐥𝐟"}
+┃■ 𝐏𝐑𝐄𝐅𝐈𝐗 : ${prefix}
 ┃■ 𝐑𝐔𝐍 𝐈𝐍 : ${runWith} 
 ┃■ 𝐃𝐀𝐓𝐄 :  *${calender}*
 ┃■ 𝐓𝐈𝐌𝐄 :  *${timeWib}*
-┗━━━━━━━━━━━━━━
+┗━━━━━━━━━━━━━━━━━❐
  ${readmore}`)}
 
 exports.fitur = (prefix) => {
@@ -117,24 +118,14 @@ return Ehztext(`
 *➼ setbio*
 *➼ listcase*
 *➼ update*
+*➼ restart*
 
     \`☛ 𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔 ☚\`
 *➼ tagall*
-*➼ antilink*
-*➼ antivirtex*
-*➼ antidelete*
-*➼ antibot*
-*➼ revoke*
-*➼ promote*
-*➼ demote*
 *➼ kick*
 *➼ add*
 *➼ mute*
 *➼ tag*
-*➼ unmute*
-*➼ welcome*
-*➼ tagadmin*
-*➼ listadmin*
 *➼ tagme*
 *➼ kickall*
 *➼ gcinfo*
@@ -145,6 +136,17 @@ return Ehztext(`
 *➼ delppgc*
 *➼ inspect*
 *➼ revoke*
+*➼ antilink*
+*➼ antivirtex*
+*➼ antidelete*
+*➼ antibot*
+*➼ unmute*
+*➼ welcome*
+*➼ tagadmin*
+*➼ listadmin*
+*➼ revoke*
+*➼ promote*
+*➼ demote*
 *➼ resetgclink*
 *➼ opentime*
 *➼ closetime*
@@ -169,13 +171,20 @@ return Ehztext(`
 *➼ runtime*
 *➼ ping*
 *➼ areact*
-*➼ svcontact*
-*➼ obfuscate*
-*➼ getsession*
 *➼ join*
 *➼ sticker*
 *➼ take*
 *➼ fancy*
+*➼ style*
+*➼ broadcast*
+*➼ exchange*
+*➼ translate*
+*➼ encode*
+*➼ decode*
+*➼ encrypt*
+*➼ svcontact*
+*➼ obfuscate*
+*➼ getsession*
 
       \`☛ 𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔 ☚\`
 *➼ lyrics*
@@ -191,17 +200,20 @@ return Ehztext(`
 *➼ gitstalk*
 *➼ wachannel*
 *➼ tiktokstalk*
+*➼ freefirestalk*
+*➼ npmcheck*
 
       \`☛ 𝐅𝐔𝐍 𝐌𝐄𝐍𝐔 ☚\`
+*➼ flirt*    
+*➼ truth*
+*➼ jokes*
 *➼ love*
 *➼ conf*
 *➼ angry*
 *➼ hrt*
-➼
-➼
-➼
-➼
-➼
+
+      \`☛ 𝐁𝐔𝐆 𝐌𝐄𝐍𝐔 ☚\`
+*➼ next update😑*
 `
 )}
   

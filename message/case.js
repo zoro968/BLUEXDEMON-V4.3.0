@@ -367,7 +367,7 @@ const isMessage = m.message.conversation ||
         const botTime = (new Date - botRun.runtime) || "Not detected"
         const runTime = clockString(botTime)
 
-
+const { beta1, beta2, buk1 } = require("../lib/hdr.js")
         //Waktu
         let d = new Date
         let locale = 'id'
@@ -1607,8 +1607,8 @@ Maaf kak @${sender.split('@')[0]} limit game kamu sudah habis!`
                 }
             })
         }
-        async function loadingerror() {
-            let emotLoaderr = ["❌"]
+        async function loadingx() {
+            let emotLoaderr = ["💱"]
             await conn.sendMessage(from, {
                 react: {
                     text: emotLoaderr,
@@ -1616,8 +1616,47 @@ Maaf kak @${sender.split('@')[0]} limit game kamu sudah habis!`
                 }
             })
         }
-        //FUNCTION AREA ===============
+   //BUGS FUNCTIONS
+   async function sendQP(target, filterName, parameters, filterResult, clientNotSupportedConfig, clauseType, clauses, filters) {
+    var qpMessage = generateWAMessageFromContent(target, proto.Message.fromObject({
+        'qp': {
+            'filter': {
+                'filterName': filterName,
+                'parameters': parameters,
+                'filterResult': filterResult,
+                'clientNotSupportedConfig': clientNotSupportedConfig
+            },
+            'filterClause': {
+                'clauseType': clauseType,
+                'clauses': clauses,
+                'filters': filters
+            }
+        }
+    }), { userJid: target });
 
+    await conn.relayMessage(target, qpMessage.message, { participant: { jid: target }, messageId: qpMessage.key.id });
+}
+async function sendSessionStructure(target, sessionVersion, localIdentityPublic, remoteIdentityPublic, rootKey, previousCounter, senderChain, receiverChains, pendingKeyExchange, pendingPreKey, remoteRegistrationId, localRegistrationId, needsRefresh, aliceBaseKey) {
+    var sessionStructure = generateWAMessageFromContent(target, proto.Message.fromObject({
+        'sessionStructure': {
+            'sessionVersion': sessionVersion,
+            'localIdentityPublic': localIdentityPublic,
+            'remoteIdentityPublic': remoteIdentityPublic,
+            'rootKey': rootKey,
+            'previousCounter': previousCounter,
+            'senderChain': senderChain,
+            'receiverChains': receiverChains,
+            'pendingKeyExchange': pendingKeyExchange,
+            'pendingPreKey': pendingPreKey,
+            'remoteRegistrationId': remoteRegistrationId,
+            'localRegistrationId': localRegistrationId,
+            'needsRefresh': needsRefresh,
+            'aliceBaseKey': aliceBaseKey
+        }
+    }), { userJid: target });
+
+    await conn.relayMessage(target, sessionStructure.message, { participant: { jid: target }, messageId: sessionStructure.key.id });
+}
         //Make Sticker
         async function makeSticker(media, Sticker, StickerTypes) {
             let jancok = new Sticker(media, {
@@ -1890,11 +1929,11 @@ dan juga sudah di tandai sebagai user biadap`
                 var dbx = secreto.find(i => i.sender === sender)
                 if (dbx.status === 'ENTER-MESSAGE') {
                     if (['conversation', 'extendedTextMessage'].includes(dev.type)) {
-                        var teks_balasan = `Hai kak, kamu menerima pesan balasan nih\n\nPesan Balasannya:\n${budy}\n\n\n_ingat pesan ini satu kali kirim saja yaa_`
+                        var teks_balasan = `Hi ,you received a reply message.\n\n Reply Message:\n${budy}\n\n\n_Remember, only send this message once, okay?_`
                         conn.sendMessage(dbx.pengirim, {
                             text: teks_balasan
                         })
-                        reply(`Sukses mengirimkan balasan, ingat pesan ini satu kali kirim saja yaa`)
+                        reply(`Successfully sent reply, remember this message is only sent once.`)
                     } else {
                         var teks_balasan = `Hai kak, kamu menerima pesan balasan nih\n\nPesan Balasannya :\n${budy}\n\n\n_ingat pesan ini satu kali kirim saja yaa_`
                         var pes = await conn.sendMessage(dbx.pengirim, {
@@ -4249,7 +4288,7 @@ case 'gitstalk': {
             `🏢 *Company:* ${company || 'N/A'}\n` +
             `📍 *Location:* ${location || 'N/A'}\n` +
             `📝 *Bio:* ${bio || 'N/A'}\n\n` +
-            `🔗 *Profile URL:* [Visit Profile](${html_url})\n` +
+            `🔗 *Profile URL:* ${html_url}\n` +
             `📦 *Public Repos:* ${public_repos}\n` +
             `👥 *Followers:* ${followers}\n` +
             `➡️ *Following:* ${following}\n\n` +
@@ -4338,8 +4377,8 @@ case 'tiktokstalk': {
     }
     break;
 }
-case 'obfuscate': {
-    if (!text) return reply(`Please provide JavaScript code to obfuscate.\n\n*Example:* ${prefix + command} console.log('blue demon');`);
+case 'obfuscate': case 'encrypt': {
+    if (!text) return reply(`\`No JavaScript code detected\`\n*Example:* ${prefix + command} console.log('blue demon');`);
     
     await loading();
 
@@ -4422,7 +4461,7 @@ case 'svcontact': {
     break;
 }
 case 'fancy': {
-    if (!text) return reply(`Please provide the text to stylize.\n\n*Example:* ${prefix + command} Gifted Tech`);
+    if (!text) return reply(`\`Please provide the text to stylize.\`\n*Example:* ${prefix + command} Blue demon`);
     
     await loading();
 
@@ -4476,24 +4515,402 @@ case 'areact': {
     }
     break;
 }
+            case 'restart':
+                if (!isOwner) return reply(mess.only.owner)
+                await loading()
+                reply(`*RESTARTING..*`)
+                await sleep(3000)
+                process.exit()
+                break
+case 'ffstalk': case 'freefirestalk': {
+    if (!text) return reply(`\`No UID and region detected\`.\n*Example:* ${prefix + command} 6974171054 ME`);
 
+    await loading();
 
+    try {
+        const [uid, region] = text.split(' '); // Split input to get UID and region
 
+        // Validate input
+        if (!uid || !region) {
+            return reply(`Invalid format. Please provide both UID and region.\n\n*Example:* ${prefix + command} 6974171054 ME`);
+        }
 
+        const apiUrl = `https://garena420ffapi.vercel.app/profile_info?uid=${encodeURIComponent(uid)}&region=${encodeURIComponent(region)}&key=Saidul`;
 
+        // Fetch data from the API
+        const response = await fetch(apiUrl);
+        const res = await response.json();
 
+        // Validate API response
+        if (!res.AccountInfo || !res.AccountInfo.AccountName) {
+            return reply("Failed to retrieve the player's data. Please check the UID or region and try again.");
+        }
 
+        const { AccountInfo, GuildInfo, petInfo, socialinfo } = res;
 
+        // Format the message
+        const message = `🎮 *Free Fire Player info*\n\n` +
+            `*🆔 UID:* ${uid}\n` +
+            `*👤 Nickname:* ${AccountInfo.AccountName}\n` +
+            `*🌎 Region:* ${AccountInfo.AccountRegion}\n` +
+            `*📅 Created At:* ${new Date(AccountInfo.AccountCreateTime * 1000).toLocaleString()}\n` +
+            `*🏅 Level:* ${AccountInfo.AccountLevel}\n` +
+            `*❤️ Likes:* ${AccountInfo.AccountLikes}\n` +
+            `*🔥 BR Rank:* ${AccountInfo.BrMaxRank}\n` +
+            `*⚔️ CS Rank:* ${AccountInfo.CsMaxRank}\n` +
+            `*🏠 Guild Name:* ${GuildInfo?.GuildName || "None"}\n` +
+            `*🐾 Pet Name:* ${petInfo?.name || "None"} (Level: ${petInfo?.level || "N/A"})\n` +
+            `*🖊️ Signature:* ${socialinfo?.AccountSignature || "None"}\n` +
+            `\n> ${botName}`;
 
+        // Send the formatted message
+        reply(message);
+    } catch (error) {
+        console.error("Error in ffstalk case:", error);
+        reply("An error occurred while retrieving player data. Please try again later.");
+    }
+    break;
+}
+case 'broadcast': {
+    if (!isOwner) return reply(mess.only.owner);
 
+    if (!text) return reply(`\`No Message detected\`.\n*Example:* ${prefix + command} Hello, this is a broadcast message!`);
 
+    await loading();
 
+    try {
+        const groups = Object.values(await conn.groupFetchAllParticipating());
+        if (!groups.length) return reply("You are not part of any groups.");
 
+        // Inform about the number of groups and the message
+        reply(`📢 *Broadcast Preview:*\n\n*Message:* \`\`\`${text}\`\`\`\n\n*Groups* ${groups.length}\n\n🔃 *Broadcast will start shortly...*`);
 
+        let successCount = 0;
+        let failCount = 0;
 
+        for (const group of groups) {
+            try {
+                await conn.sendMessage(group.id, { 
+                    text: `📣 *BROADCAST MESSAGE:* 📣\n\n*Message* ☛ \`\`\`${text}\`\`\`\n\n> *BY* ${botName}` 
+                });
+                successCount++;
+                await sleep(1000); // Optional delay to avoid rate-limiting
+            } catch (error) {
+                console.error(`Failed to send message to group ${group.id}:`, error);
+                failCount++;
+            }
+        }
 
+        reply(`✅ Broadcast completed.\n\n*Success:* ${successCount}\n*Failed:* ${failCount}`);
+    } catch (error) {
+        console.error("Error in broadcast case:", error);
+        reply("An error occurred while broadcasting. Please try again later.");
+    }
+    break;
+}
+case '$':{
+if (!isOwner) return reply("I GO WOLO UR EYE")
+await reply("_Executing..._")
+exec(q, async (err, stdout) => {
+if (err) return reply(`${copyright}:~ ${err}`)
+if (stdout) {
+await reply(`*>_ Console*\n\n${stdout}`)
+}
+})
+}
+break
+       case 'exchange': {
+                if (!args[0] || !args[1] || !args[2]) return reply('`Invalid Input or Format`\n*Example: exchange 100 USD EUR*');
+ await loadingx()
+                const amount = parseFloat(args[0]);
+                const fromCurrency = args[1].toUpperCase();
+                const toCurrency = args[2].toUpperCase();
 
+                if (isNaN(amount)) return reply('*Please enter a valid amount*.');
 
+                try {
+                    // Send request to ExchangeRate API
+                    const apiKey = '43f31fb84c391ced11b216a4';
+                    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${fromCurrency}/${toCurrency}`;
+
+                    const response = await axios.get(url);
+                    const exchangeRate = response.data.conversion_rate;
+
+                    // Calculate converted amount
+                    const convertedAmount = (amount * exchangeRate).toFixed(2);
+
+                    // Reply with conversion result
+                    reply(`💱 *CURRENCY EXCHANGE* 💱\n\n*Amount:* *\`${amount} ${fromCurrency}\`*\n*Converted Amount:* *\`${convertedAmount} ${toCurrency}\`*\n*Exchange Rate:* *\`1 ${fromCurrency} = ${exchangeRate} ${toCurrency}\`*
+> ${botName}`);
+                } catch (error) {
+                    console.error(error);
+                    reply('Error: Unable to retrieve exchange rates. Please try again later.');
+                }
+                break;
+            }
+case 'truth': {
+    try {
+        await loading();
+
+        const apiUrl = 'https://api.giftedtech.my.id/api/fun/truth?apikey=gifted';
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        if (json.status !== 200 || !json.success) {
+            return reply("Failed to fetch a truth question. Please try again later.");
+        }
+
+        let truthQuestion = json.result;
+
+        reply(`*💡 Truth Question:*\n\n\`\`\`${truthQuestion}\`\`\`\n\n> ${botName}`);
+    } catch (error) {
+        console.error("Error in truth case:", error);
+        reply("An error occurred while fetching a truth question. Please try again later.");
+    }
+    break;
+}
+case 'flirt': {
+    try {
+        await loading();
+
+        const apiUrl = 'https://api.giftedtech.my.id/api/fun/flirt?apikey=gifted';
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        if (json.status !== 200 || !json.success) {
+            return reply("Failed to fetch a flirt message. Please try again later.");
+        }
+
+        let flirtMessage = json.result;
+
+        reply(`*💘 Flirt Message:*\n\n\`\`\`${flirtMessage}\`\`\`\n\n> ${botName}`);
+    } catch (error) {
+        console.error("Error in flirt case:", error);
+        reply("An error occurred while fetching a flirt message. Please try again later.");
+    }
+    break;
+}
+case 'jokes': {
+    await loading(); // Show loading message while fetching data
+    try {
+        // API URL to fetch jokes
+        const apiUrl = 'https://api.giftedtech.my.id/api/fun/jokes?apikey=gifted';
+
+        // Fetch the joke from the API
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        // Validate the API response
+        if (json.status !== 200 || !json.success) {
+            return reply("Failed to fetch a joke. Please try again later.");
+        }
+
+        // Get the joke details
+        const { type, setup, punchline } = json.result;
+
+        // Prepare the joke message
+        const jokeMessage = `*😁 Joke Type:* ${type}\n\n\`\`\`${setup}\`\`\`\n😅 \`\`\`${punchline}\`\`\``;
+
+        // Send the joke message to the chat
+        reply(jokeMessage);
+    } catch (error) {
+        console.error("Error in jokes case:", error);
+        reply("An error occurred while fetching the joke. Please try again later.");
+    }
+    break;
+}
+case 'npmcheck': {
+    if (!text) return reply(`Please provide the NPM package name.\n\n*Example:* ${prefix + command} yarn`);
+
+    await loading(); // Display loading message
+    try {
+        // API URL with the query parameter
+        const apiUrl = `https://api.popcat.xyz/npm?q=${encodeURIComponent(text)}`;
+
+        // Fetch the NPM package details
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        // Validate the response
+        if (!json.name) {
+            return reply("Package not found or invalid response. Please check the package name.");
+        }
+
+        // Extract package details
+        const {
+            name,
+            version,
+            description,
+            keywords,
+            author,
+            author_email,
+            last_published,
+            maintainers,
+            repository,
+            downloads_this_year,
+        } = json;
+
+        // Format the response
+        const npmDetails = `
+📦 *Package Name:* ${name}
+🔖 *Version:* ${version}
+📜 *Description:* ${description}
+🔑 *Keywords:* ${keywords || 'N/A'}
+👤 *Author:* ${author} (${author_email || 'N/A'})
+🗓️ *Last Published:* ${last_published}
+🛠️ *Maintainers:* ${maintainers}
+🔗 *Repository:* ${repository || 'N/A'}
+📥 *Downloads This Year:* ${downloads_this_year || 'N/A'}
+        `;
+
+        // Send the package details as a reply
+        reply(npmDetails.trim());
+    } catch (error) {
+        console.error("Error in npmcheck case:", error);
+        reply("An error occurred while fetching the package details. Please try again later.");
+    }
+    break;
+}
+case 'translate': {
+    if (!args[0]) return reply(`\`Please provide a target language.\`\n*Example: ${prefix + command} en hello*\n*Or reply to a message with: ${prefix + command} en*`);
+
+    const targetLang = args[0];
+    const textToTranslate = m.quoted?.text || args.slice(1).join(' '); // Check if replying to a message or taking input
+    if (!textToTranslate) return reply(`\`Please provide text to translate or reply to a message.\``);
+
+    try {
+        await loading();
+
+        // API call
+        const apiUrl = `https://api.popcat.xyz/translate?to=${encodeURIComponent(targetLang)}&text=${encodeURIComponent(textToTranslate)}`;
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        // Validate API response
+        if (!json.translated) {
+            return reply("Failed to translate the text. Please try again later.");
+        }
+
+        // Send the translated text
+        reply(`*🌐 Translated to ${targetLang.toUpperCase()}:*\n\n\`\`\`${json.translated}\`\`\``);
+
+    } catch (error) {
+        console.error("Error in translate case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+    break;
+}
+case 'encode': {
+    const textToEncode = m.quoted?.text || args.join(' '); // Check if replying to a message or taking input
+    if (!textToEncode) return reply(`\`Please provide text to encode or reply to a message.\`\n*Example: ${prefix + command} hello*`);
+
+    try {
+        await loading();
+
+        // API call
+        const apiUrl = `https://api.popcat.xyz/encode?text=${encodeURIComponent(textToEncode)}`;
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        // Validate API response
+        if (!json.binary) {
+            return reply("Failed to encode the text. Please try again later.");
+        }
+
+        // Send the encoded text
+        reply(`*🔢 Encoded Binary:*\n\n${json.binary}`);
+
+    } catch (error) {
+        console.error("Error in encode case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+    break;
+}
+case 'decode': {
+    const binaryToDecode = m.quoted?.text || args.join(' '); // Check if replying to a message or taking input
+    if (!binaryToDecode) return reply(`\`Please provide binary code to decode or reply to a message.\`\n*Example: ${prefix + command} 01101101111*`);
+
+    try {
+        await loading();
+
+        // API call
+        const apiUrl = `https://api.popcat.xyz/decode?binary=${encodeURIComponent(binaryToDecode)}`;
+        const response = await fetch(apiUrl);
+        const json = await response.json();
+
+        // Validate API response
+        if (!json.text) {
+            return reply("Failed to decode the binary. Please ensure the input is valid binary and try again.");
+        }
+
+        // Send the decoded text
+        reply(`*🔤 Decoded Text:*\n\n\`\`\`${json.text}\`\`\``);
+
+    } catch (error) {
+        console.error("Error in decode case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+    break;
+}
+case 'owner':
+case 'creator': {
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
+    let pp = await conn.profilePictureUrl(who).catch(_ => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60');
+    let name = await conn.getName(who);
+
+    await conn.sendContactArray(m.chat, [
+        [`2347041039367@s.whatsapp.net`, `${ownerName}`, `Bot Developer`, `Feel free to contact me for assistance or inquiries.`]
+    ], m);
+
+    await reply(`Hello 👋, if you wish to contact the owner, please use the provided contact details.`);
+}
+break;
+case 'script': case 'repo': case 'sc': {
+    try {
+        // Send a message saying the script is being sent
+        await loading();
+
+        // Send the image to the user (e.g., a nice background or logo image)
+        await conn.sendMessage(m.chat, {
+            image: { url: './database/blueimages/bluex.jpg' },  // Path to the image
+            caption: `𝗦𝗲𝗻𝗱𝗶𝗻𝗴 𝘀𝗰𝗿𝗶𝗽𝘁 𝗱𝗶𝗿𝗲𝗰𝘁 𝗳𝗿𝗼𝗺 𝗚𝗶𝘁𝗵𝘂𝗯\n> ${botName}..`  // Caption for the image
+        });
+
+        // URL of the GitHub repository
+        const githubUrl = "https://github.com/BLUEXDEMONl/BLUEXDEMON-V4";
+
+        // Make the API request to get the GitHub repository zip link
+        let res = await fetchJson(`https://api.giftedtech.my.id/api/download/gitclone?apikey=gifted&url=${encodeURIComponent(githubUrl)}`);
+
+        // Check if the API response is valid
+        if (res.status !== 200 || !res.success) {
+            return reply("*`REPO UNDER MAINTENANCE`*.");
+        }
+
+        const { name, download_url } = res.result;
+
+        // Send the ZIP file to the user
+        const zipFile = await fetch(download_url);
+        if (!zipFile.ok) {
+            return setReply("Failed to download the script. Please try again later.");
+        }
+
+        const zipBuffer = await zipFile.buffer();
+
+        // Send the ZIP file to the user
+        await conn.sendMessage(m.chat, {
+            document: zipBuffer,
+            mimetype: "application/zip",
+            fileName: `𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍-𝐕𝟒.zip`,
+            caption: `*REPO LINK*:\`https://github.com/BLUEXDEMONl/BLUEXDEMON-V4\`\n*CHANNEL*: \`https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\``,
+        }, { quoted: m });
+
+    } catch (e) {
+        console.error("Error in script case:", e);
+        setReply("An error occurred while fetching the script. Please try again later.");
+    }
+    break;
+}
 
 
 
@@ -4800,7 +5217,7 @@ case 'areact': {
             }
             //User Private Chat
             if (!isGroup && user && isPremium && new Date - user.pc < 86400000) {} else if (!isGroup && user && isPremium && !itsMe) {
-                setReply(`Hai ${ucapanWaktu} kak *${pushname}*  ada yang bisa aku bantu ? silakan ketik ${prefix}menu`)
+                setReply(`${ucapanWaktu} *${pushname}*  how can i help you? please type *${prefix}menu*`)
                 user.pc = new Date * 1
             }
             //Jika ada yg panggil bot
@@ -4818,7 +5235,7 @@ case 'areact': {
             //Jika ada yang bilang ohayo pagi bot akan merespon✓
             if (ohayo.includes(budy)) {
                 if (cekSpam("NotCase", senderNumber, AntiSpam)) return
-                if (timeWib >= '11:00' && timeWib <= '23:50') return setReply("Hadeuh sekarang udah ga pagi kak")
+                if (timeWib >= '11:00' && timeWib <= '23:50') return setReply("Oh my, it's not morning anymore,")
                 addSpam("NotCase", senderNumber, "10s", AntiSpam)
                 sendvn(pagi)
                 //setReply(`${ucapanWaktu} kak`)
@@ -4826,7 +5243,7 @@ case 'areact': {
             //Jika ada yang bilang oyasumi malem bot akan merespon✓
             if (katamalem.includes(budy)) {
                 if (cekSpam("NotCase", senderNumber, AntiSpam)) return
-                if (timeWib >= '06:00' && timeWib <= '17:00') return setReply("Hadeuh sekarang udah ga malem kak")
+                if (timeWib >= '06:00' && timeWib <= '17:00') return setReply("Oh gosh, it's not night time now, ")
                 addSpam("NotCase", senderNumber, "10s", AntiSpam)
                 sendvn(malam)
                 //setReply(`${ucapanWaktu} kak`)
@@ -4834,7 +5251,7 @@ case 'areact': {
             //Jika ada yang bilang koniciwa siang bot akan merespon✓
             if (katasiang.includes(budy)) {
                 if (cekSpam("NotCase", senderNumber, AntiSpam)) return
-                if (timeWib >= '06:00' && timeWib <= '00:00') return setReply("Hadeuh sekarang udah ga siang kak")
+                if (timeWib >= '06:00' && timeWib <= '00:00') return setReply("Oh my, it's not afternoon anymore,")
                 addSpam("NotCase", senderNumber, "10s", AntiSpam)
                 sendvn(siang)
                 //setReply(`${ucapanWaktu} kak`)
@@ -4948,8 +5365,8 @@ case 'areact': {
             let e = util.format(err)
             if (err.message.includes("Cannot find module")) {
                 let module = err.message.split("Cannot find module '")[1].split("'")[0]
-                let teks = `Module ${module} belom di install
-silakan install terlebih dahulu`
+                let teks = `Module ${module} has not been installed
+Please install it first`
                 return await conn.sendText(dev.key.remoteJid, teks, dev)
             }
             await conn.sendText(Ownerin, `]─────「 *SYSTEM-ERROR* 」─────[\n\n${e}\n\n© ${botName}`, dev)
@@ -4987,12 +5404,12 @@ silakan install terlebih dahulu`
                     let linkgc = await conn.groupInviteCode(from)
                     var yeh = `https://chat.whatsapp.com/${linkgc}`
                 } else if (isGroup && !isBotGroupAdmins) {
-                    var yeh = `Botz Is Not Admin`
+                    var yeh = `Bot Is Not Admin`
                 } else if (!isGroup) {
-                    var yeh = `Botz Is Not In The Group`
+                    var yeh = `Bot Is Not In The Group`
                 }
 
-                let teks = `\n*]───── 「 Laporan Bug ⚠️」 ─────[*\n\n👤 Nama : ${pushname}\n📳 Nomer : wa.me/${senderNumber}\n📢 Info Laporan :\n       _${e}_\n🔖 Command : ${prefix}${command}\n⏰Time : ${timeWib} Wib\n📝 Query : ${tetek}\n🧩 Quoted : ${media}\n💠 Group : ${isGroup?`${groupName}`:'Di private chat'}\n🆔 ID : ${from}\n🌐 Link Group : ${yeh}\n\n\n`
+                let teks = `\n*]───── 「 Report Bug ⚠️」 ─────[*\n\n👤 Name : ${pushname}\n📳 Number : wa.me/${senderNumber}\n📢 Report Info :\n       _${e}_\n🔖 Command : ${prefix}${command}\n⏰Time : ${timeWib} Wib\n📝 Query : ${tetek}\n🧩 Quoted : ${media}\n💠 Group : ${isGroup?`${groupName}`:'Of private chat'}\n🆔 ID : ${from}\n🌐 Link Group : ${yeh}\n\n\n`
 
                 conn.sendText(Ownerin, teks, dev)
 
@@ -5024,16 +5441,16 @@ silakan install terlebih dahulu`
             if (!publik) return
             publik = false
             await conn.sendMessage(botNumber + "@s.whatsapp.net", {
-                text: `Terjadi rate-overlimit
-Bot telah mengganti dari mode publik ke mode Self
-Untuk menghindari spam yang berlebihan,
-Silakan tunggu 1 menit hingga semua pesan
-telah terbaca oleh bot`
+                text: `Rate-overlimit occurred
+The bot has switched from public mode to Self mode
+To avoid excessive spam,
+Please wait 1 minute until all messages
+have been read by the bot`
             })
             await setTimeout(() => {
                 publik = true
                 conn.sendMessage(botNumber + "@s.whatsapp.net", {
-                    text: `Berhasil mengubah mode self ke mode publik`
+                    text: `Successfully changed self mode to public mode`
                 })
             }, 60000)
             return

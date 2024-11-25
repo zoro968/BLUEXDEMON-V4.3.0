@@ -4853,7 +4853,8 @@ case 'decode': {
     break;
 }
 case 'owner':
-case 'creator': {
+case 'creator':
+case 'dev': {
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
     let pp = await conn.profilePictureUrl(who).catch(_ => 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60');
     let name = await conn.getName(who);

@@ -119,6 +119,7 @@ return Ehztext(`
 *➼ listcase*
 *➼ update*
 *➼ restart*
+*➼ owner*
 
     \`☛ 𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔 ☚\`
 *➼ tagall*
@@ -172,6 +173,7 @@ return Ehztext(`
 *➼ ping*
 *➼ areact*
 *➼ join*
+*➼ script*
 *➼ sticker*
 *➼ take*
 *➼ fancy*

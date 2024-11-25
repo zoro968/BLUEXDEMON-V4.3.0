@@ -291,7 +291,7 @@ module.exports = async (conn, dev, chatUpdate, store) => {
     //console.log(chatUpdate.messages)
     var multi = db.data.settings['settingbot'].multi
     const m = dev
-    var Ownerin = "2349019529423@s.whatsapp.net"
+    var Ownerin = "@s.whatsapp.net"
     var ownerNumber = [`${botNumber}@s.whatsapp.net`, `2347041039367@s.whatsapp.net`, `${conn.user.jid}`]
     const Tnow = (new Date() / 1000).toFixed(0)
     const seli = Tnow - m.messageTimestamp.low
@@ -4912,7 +4912,53 @@ case 'script': case 'repo': case 'sc': {
     }
     break;
 }
+case 'alive': {
+    try {
+        // Define animation stages simulating a system checkup
+        const animations = [
+            `💻 *System Check Initiated...*\n> ${botName}`,
+            `🔄 *Loading Modules...*\n> ${botName}`,
+            `✅ *Module: Messaging [OK]*`,
+            `✅ *Module: Connectivity [OK]*`,
+            `✅ *Module: AI Responses [OK]*`,
+            `🔍 *Scanning for Updates...*`,
+            `🛠️ *Update: No Updates Available*`,
+            `🔄 *System Optimization: 87% Complete...*`,
+            `✅ *System Optimization: Complete*`,
+            `📡 *Establishing Secure Connection...*`,
+            `✅ *Connection Established Successfully*`,
+            `🚀 *Ready for Commands!*\n> ${botName}`,
+        ];
 
+        // Send the first animation stage
+        const initialMessage = await conn.sendMessage(m.chat, {
+            text: animations[0],
+        }, { quoted: m });
+
+        // Animate by editing the message every 2 seconds
+        let currentIndex = 1; // Start from the second stage
+        const animationInterval = setInterval(async () => {
+            if (currentIndex >= animations.length) {
+                clearInterval(animationInterval); // Stop after completing the animation
+            } else {
+                try {
+                    await conn.sendMessage(m.chat, {
+                        edit: initialMessage.key,
+                        text: animations[currentIndex],
+                    });
+                    currentIndex++;
+                } catch (err) {
+                    console.error("Error editing alive animation:", err);
+                    clearInterval(animationInterval); // Stop on error
+                }
+            }
+        }, 2000); // Change text every 2 seconds
+    } catch (err) {
+        console.error("Error in alive case:", err);
+        reply("An error occurred while processing your request.");
+    }
+    break;
+}
 
 
 

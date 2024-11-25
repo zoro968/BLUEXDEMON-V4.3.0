@@ -120,6 +120,7 @@ return Ehztext(`
 *➼ update*
 *➼ restart*
 *➼ owner*
+*➼ alive*
 
     \`☛ 𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔 ☚\`
 *➼ tagall*

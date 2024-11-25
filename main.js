@@ -297,7 +297,7 @@ browser: ["Ubuntu", "Chrome", "20.0.04"],
 });
 if(pairingCode && !connectionOptions.authState.creds.registered) {
         await clearConsole();
-		console.log(`📣MAKE SURE YOU INPUT YOUR NUMBER IN THE settings.json file\n\nCONNECTING TO ${pairingNumber}`)
+		console.log(`📣MAKE SURE YOU INPUT YOUR NUMBER IN THE settings.js file\n\nCONNECTING TO ${pairingNumber}`)
 		setTimeout(async () => {
         let code = await connectionOptions.requestPairingCode(pairingNumber)
           code = code?.match(/.{1,4}/g)?.join("-") || code

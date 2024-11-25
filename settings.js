@@ -65116,6 +65116,7 @@ global.botName = "🐦‍🔥𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒�
 global.wm = "𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒"
 global.setmenu = "image" 
 global.docType = "application/vnd.ms-excel"
+global.themeemoji = '🐦‍🔥'
 global.autoreact = false
 global.public = true
 global.baileysMd = true
@@ -65126,7 +65127,7 @@ global.fake = botName
 global.Console = false
 global.autorespon = false
 global.copyright = `BLUE DEMON BOT`
-global.baileysVersion = `🐦‍🔥version 4.0`
+global.baileysVersion = `${themeemoji}Baileys ${version}`
 global.On = "On"
 global.Off ="Off"
 global.autoblockcmd = false
@@ -65150,7 +65151,6 @@ global.fotoRandom = [
 "https://wallpapers.com/images/high/might-guy-232xixhrqrsfbtrb.webp",
 "https://wallpapers.com/images/high/might-guy-1336-x-768-fmt8uvn5c0bjhnxq.webp"]
 
-global.themeemoji = '🐦‍🔥'
 //Apikey Nya
 global.skizo = 'memberaja'
 global.Betabotz = 'LSd7Lq9S'

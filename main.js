@@ -277,7 +277,7 @@ const msg = await store.loadMessage(key.remoteJid, key.id, undefined)
 return msg?.message || undefined
 }
 return {
-conversation: 'hallo'
+conversation: 'hello'
 }
 }
 
@@ -297,7 +297,7 @@ browser: ["Ubuntu", "Chrome", "20.0.04"],
 });
 if(pairingCode && !connectionOptions.authState.creds.registered) {
         await clearConsole();
-		console.log(`CONNECTING TO ${pairingNumber}`)
+		console.log(`📣MAKE SURE YOU INPUT YOUR NUMBER IN THE settings.json file\n\nCONNECTING TO ${pairingNumber}`)
 		setTimeout(async () => {
         let code = await connectionOptions.requestPairingCode(pairingNumber)
           code = code?.match(/.{1,4}/g)?.join("-") || code
@@ -440,13 +440,17 @@ console.log(`${color(`[`,`white`)+color(`3`,`red`)+color(`]`,`white`)}`,`https:/
 //await sleep(400)  
 console.log(`${color(`[`,`white`)+color(`4`,`red`)+color(`]`,`white`)}`,"data 5") 
 //await sleep(400)  
-console.log(color(`]─`,`magenta`),`「`,  color(`RANGEL`,`red`), `」`,  color(`─[`,`magenta`))
+console.log(color(`]─`,`magenta`),`「`,  color(`BLUE DEMON`,`blue`), `」`,  color(`─[`,`magenta`))
 //await sleep(400)  
 start(`1`,`Connecting...`)
 } else if (connection === 'open') {
  qrwa = null 
 
-conn.sendMessage(`2347041039367@s.whatsapp.net`, {text: `*\`CONNECTED SUCCESSFULLY\`*\n> Support us by following our channel\n> https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h`})
+    conn.sendMessage('2347041039367@s.whatsapp.net', {
+        image: { url: './database/blueimages/bluex.jpg' }, // Path to your image
+        caption: `${botName}\n\n*\`CONNECTED SUCCESSFULLY\`*\n> Support us by following our channel\n https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h`
+    });
+
 success(`1`,`[■■■■■■■■■■■■■■■] Connected`) 
 }
 }
@@ -569,10 +573,10 @@ let d = isNaN(ms) ? '--' : Math.floor(ms / 86400000)
 let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000) % 24
 let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
 let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
-var dDisplay = d > 0 ? d + (d == 1 ? " hari, " : " hari, ") : "";
-	var hDisplay = h > 0 ? h + (h == 1 ? " jam, " : " jam, ") : "";
-	var mDisplay = m > 0 ? m + (m == 1 ? " menit, " : " menit, ") : "";
-	var sDisplay = s > 0 ? s + (s == 1 ? " detik" : " detik") : "";
+var dDisplay = d > 0 ? d + (d == 1 ? " day, " : " day, ") : "";
+	var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hour, ") : "";
+	var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minute, ") : "";
+	var sDisplay = s > 0 ? s + (s == 1 ? " second" : " second") : "";
 let time = d > 0 ? dDisplay + hDisplay + mDisplay + sDisplay : hDisplay + mDisplay + sDisplay
 return time
 }

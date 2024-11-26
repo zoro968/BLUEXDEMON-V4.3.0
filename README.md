@@ -8,19 +8,15 @@
     <a href="https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.git"><img src="https://raw.githubusercontent.com/Bolaolat/BLUE-DEMON-V2/refs/heads/main/bluex.jpg" alt="IMG-20240906-154743-430" border="0"></a>
 <p align="center">
 <pBLUEXDEMON-V4 align="center">
-<a href="https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.git"><img title="Author" src="https://img.shields.io/badge/Rias Gremory-black?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.git"><img title="Author" src="https://img.shields.io/badge/BLUE DEMON-black?style=for-the-badge&logo=github"></a>
 <p align="center">
-<a href="https://github.com/Toxic1239/followers"><img title="Followers" src="https://img.shields.io/github/followers/Toxic1239?color=blue&style=flat-square"></a>
-<a href="https://github.com/Toxic1239/Queen-RiasV2/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Toxic1239/Queen-RiasV2?color=red&style=flat-square"></a>
-<a href="https://github.com/Toxic1239/Queen-RiasV2/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Toxic1239/Queen-RiasV2?color=green&style=flat-square"></a>
-<a href="https://github.com/Toxic1239/Queen-RiasV2/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Toxic1239/Queen-RiasV2?label=Watchers&color=yellow&style=flat-square"></a>
 
 #### SETUP 
 <p>IF YOU WANNA DEPLOY USING CREDS.JSON ADD THE CREDS TO SESSIONS FOLDER </p>
 
 ### 1.`First STAR 🌟 This Repo ` And Then Click Fork Below
 <br>
-    <a href='https://github.com/Toxic1239/Queen-RiasV2/fork' target="_blank"><img alt='Fork' src='https://img.shields.io/badge/-Fork-blue?style=for-the-badge&logo=Github&logoColor=white'/></a>
+    <a href='https://github.com/BLUEXDEMONl/BLUEXDEMON-V4/fork' target="_blank"><img alt='Fork' src='https://img.shields.io/badge/-Fork-blue?style=for-the-badge&logo=Github&logoColor=white'/></a>
 
 ### 2. GET CREDS.JSON HERE 
 

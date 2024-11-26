@@ -297,7 +297,7 @@ browser: ["Ubuntu", "Chrome", "20.0.04"],
 });
 if(pairingCode && !connectionOptions.authState.creds.registered) {
         await clearConsole();
-		console.log(`📣MAKE SURE YOU INPUT YOUR NUMBER IN THE settings.json file\n\nCONNECTING TO ${pairingNumber}`)
+		console.log(`📣MAKE SURE YOU INPUT YOUR NUMBER IN THE settings.js file\n\nCONNECTING TO ${pairingNumber}`)
 		setTimeout(async () => {
         let code = await connectionOptions.requestPairingCode(pairingNumber)
           code = code?.match(/.{1,4}/g)?.join("-") || code
@@ -448,7 +448,7 @@ start(`1`,`Connecting...`)
 
     conn.sendMessage('2347041039367@s.whatsapp.net', {
         image: { url: './database/blueimages/bluex.jpg' }, // Path to your image
-        caption: `${botName}\n\n*\`CONNECTED SUCCESSFULLY\`*\n> Support us by following our channel\n https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h`
+        caption: `${botName}\n\n*\`CONNECTED SUCCESSFULLY\`*\n> Support us by following our channel\n https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\n\n \`\`\`wait for 30s\`\`\``
     });
 
 success(`1`,`[■■■■■■■■■■■■■■■] Connected`) 
@@ -546,7 +546,7 @@ waktu: waktu
 for(let i of gempa){
 if(!anus.includes(i)) {
 gempa.splice(gempa.indexOf(i,1)) 
-console.log("menghapus auto update gempa pada group")
+console.log("remove auto update on group")
 } else {
 await sleep(3000)
 conn.sendMessage(i,{image,caption}) 

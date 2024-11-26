@@ -1,5 +1,5 @@
 {
- "name": "BLUEXDEMON",
+ "name": "Menhera-md",
  "version": "4.4.0",
  "description": "Simple whatsapp bot with multi device.",
  "main": "index.js",
@@ -11,7 +11,7 @@
  "scripts": {
   "start": "node index.js"
  },
- "author": "BlueDemon",
+ "author": "ehanz",
  "license": "MIT",
  "dependencies": {
   "@ffmpeg-installer/ffmpeg": "^1.1.0",

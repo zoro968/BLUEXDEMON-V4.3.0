@@ -4122,31 +4122,52 @@ case 'happymod': {
     break;
 }
 case 'update': {
-                if (!isOwner) return reply(mess.only.owner);
-                await loading()
-                reply("*𝐔𝐏𝐃𝐀𝐓𝐈𝐍𝐆.....*");
-                try {
-                    const githubRawUrl = 'https://raw.githubusercontent.com/BLUEXDEMONl/BLUEDEMON-UPDATE-/refs/heads/main/case.js';
-                    const response = await fetch(githubRawUrl);
+    if (!isOwner) return reply(mess.only.owner);
+    await loading();
 
-                    if (!response.ok) {
-                        return reply('𝐒𝐄𝐑𝐕𝐄𝐑 𝐔𝐍𝐃𝐄𝐑 𝐌𝐀𝐈𝐍𝐓𝐄𝐍𝐀𝐍𝐂𝐄🔪');
-                    }
+    reply("*𝐔𝐏𝐃𝐀𝐓𝐈𝐍𝐆.....*");
 
-                    const newFileContent = await response.text();
+    const filesToUpdate = [
+        {
+            url: 'https://raw.githubusercontent.com/BLUEXDEMONl/BLUEXDEMON-V4/refs/heads/master/message/case.js',
+            path: './message/case.js',
+            name: 'case.js'
+        },
+        {
+            url: 'https://raw.githubusercontent.com/BLUEXDEMONl/BLUEXDEMON-V4/refs/heads/master/message/help.js',
+            path: './message/help.js',
+            name: 'help.js'
+        },
+        {
+            url: 'https://raw.githubusercontent.com/BLUEXDEMONl/BLUEXDEMON-V4/refs/heads/master/settings.js',
+            path: './settings.js',
+            name: 'settings.js'
+        }
+    ];
 
-                    // Update the blue file
-                    const fs = require('fs');
-                    fs.writeFileSync('./message/case.js', newFileContent, 'utf8');
+    try {
+        const fs = require('fs');
 
-                    reply('𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘 𝐔𝐏𝐃𝐀𝐓𝐄𝐃');
-                } catch (error) {
-                    console.error("Error updating file:", error);
-                    reply("Failed to update file. Please check the console for errors.");
-                }
-
-                break;
+        for (const file of filesToUpdate) {
+            const response = await fetch(file.url);
+            if (!response.ok) {
+                reply(`Failed to update *${file.name}*. Server responded with ${response.status}.`);
+                continue;
             }
+
+            const newContent = await response.text();
+            fs.writeFileSync(file.path, newContent, 'utf8');
+            reply(`*${file.name}* successfully updated.`);
+        }
+
+        reply('𝐔𝐏𝐃𝐀𝐓𝐄 𝐏𝐑𝐎𝐂𝐄𝐒𝐒 𝐂𝐎𝐌𝐏𝐋𝐄𝐓𝐄.');
+    } catch (error) {
+        console.error("Error during update:", error);
+        reply("Failed to update files. Please check the console for errors.");
+    }
+
+    break;
+}
 case 'hrt':
             case 'love': {
 

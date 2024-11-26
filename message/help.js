@@ -88,135 +88,136 @@ var saldo = db.data.users[sender].balance.toLocaleString()
 var saldo = db.data.users[sender].balance
 }
 return Ehztext(`
-┏━━━\`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\`━❐
-┃■ 𝐔𝐒𝐄𝐑  :  ${pushname}
-┃■ 𝐒𝐓𝐀𝐓𝐔𝐒 :  ${isPremium ? '𝐏𝐫𝐞𝐦𝐢𝐮𝐦':'𝐅𝐫𝐞𝐞'}
-┃■ 𝐌𝐎𝐃𝐄 : ${publik ? "𝐏𝐮𝐛𝐥𝐢𝐜" : "𝐒𝐞𝐥𝐟"}
-┃■ 𝐏𝐑𝐄𝐅𝐈𝐗 : ${prefix}
-┃■ 𝐑𝐔𝐍 𝐈𝐍 : ${runWith} 
-┃■ 𝐃𝐀𝐓𝐄 :  *${calender}*
-┃■ 𝐓𝐈𝐌𝐄 :  *${timeWib}*
-┗━━━━━━━━━━━━━━━━━❐
+        \`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\`
+> ■ 𝐔𝐒𝐄𝐑  :  ${pushname}
+> ■ 𝐒𝐓𝐀𝐓𝐔𝐒 :  ${isPremium ? '𝐏𝐫𝐞𝐦𝐢𝐮𝐦':'𝐅𝐫𝐞𝐞'}
+> ■ 𝐌𝐎𝐃𝐄 : ${publik ? "𝐏𝐮𝐛𝐥𝐢𝐜" : "𝐒𝐞𝐥𝐟"}
+> ■ 𝐏𝐑𝐄𝐅𝐈𝐗 : ${prefix}
+> ■ 𝐑𝐔𝐍 𝐈𝐍 : ${runWith} 
+> ■ 𝐃𝐀𝐓𝐄 :  *${calender}*
+> ■ 𝐓𝐈𝐌𝐄 :  *${timeWib}*
  ${readmore}`)}
 
 exports.fitur = (prefix) => {
 return Ehztext(`
      \`☛ 𝐎𝐖𝐍𝐄𝐑 𝐌𝐄𝐍𝐔 ☚\`
-*➼ addowner*
-*➼ delowner*
-*➼ listowner*
-*➼ self*
-*➼ public*
-*➼ mode*
-*➼ delete*
-*➼ read*
-*➼ clearchat*
-*➼ setpp*
-*➼ block*
-*➼ unblock* 
-*➼ setbotname*
-*➼ setbio*
-*➼ listcase*
-*➼ update*
-*➼ restart*
-*➼ owner*
-*➼ alive*
+*${sign} addowner*
+*${sign} delowner*
+*${sign} listowner*
+*${sign} self*
+*${sign} public*
+*${sign} mode*
+*${sign} delete*
+*${sign} read*
+*${sign} clearchat*
+*${sign} setpp*
+*${sign} block*
+*${sign} unblock* 
+*${sign} setbotname*
+*${sign} setbio*
+*${sign} listcase*
+*${sign} update*
+*${sign} restart*
+*${sign} owner*
+*${sign} alive*
+*${sign} scan*
 
     \`☛ 𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔 ☚\`
-*➼ tagall*
-*➼ kick*
-*➼ add*
-*➼ mute*
-*➼ tag*
-*➼ tagme*
-*➼ kickall*
-*➼ gcinfo*
-*➼ setppgc*
-*➼ setgcname*
-*➼ setdesc*
-*➼ getppgc*
-*➼ delppgc*
-*➼ inspect*
-*➼ revoke*
-*➼ antilink*
-*➼ antivirtex*
-*➼ antidelete*
-*➼ antibot*
-*➼ unmute*
-*➼ welcome*
-*➼ tagadmin*
-*➼ listadmin*
-*➼ revoke*
-*➼ promote*
-*➼ demote*
-*➼ resetgclink*
-*➼ opentime*
-*➼ closetime*
-*➼ gclink*
-*➼ leavegc*
+*${sign} tagall*
+*${sign} kick*
+*${sign} add*
+*${sign} mute*
+*${sign} tag*
+*${sign} tagme*
+*${sign} kickall*
+*${sign} gcinfo*
+*${sign} setppgc*
+*${sign} setgcname*
+*${sign} setdesc*
+*${sign} getppgc*
+*${sign} delppgc*
+*${sign} inspect*
+*${sign} revoke*
+*${sign} antilink*
+*${sign} antivirtex*
+*${sign} antidelete*
+*${sign} antibot*
+*${sign} unmute*
+*${sign} welcome*
+*${sign} tagadmin*
+*${sign} listadmin*
+*${sign} revoke*
+*${sign} promote*
+*${sign} demote*
+*${sign} resetgclink*
+*${sign} opentime*
+*${sign} closetime*
+*${sign} gclink*
+*${sign} leavegc*
+*${sign} listonline*
 
       \`☛ 𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒 ☚\`
-*➼ play*
-*➼ yts <link>*
-*➼ ytmp3 <link>*
-*➼ ytmp4 <link>*
-*➼ tiktok <link>*
-*➼ facebook <link>*
-*➼ instagram <link>*
-*➼ gitclone <link>*
-*➼ mediafire <link>*
-*➼ githubdl <link>*
+*${sign} play*
+*${sign} yts <link>*
+*${sign} ytmp3 <link>*
+*${sign} ytmp4 <link>*
+*${sign} tiktok <link>*
+*${sign} facebook <link>*
+*${sign} instagram <link>*
+*${sign} gitclone <link>*
+*${sign} mediafire <link>*
+*${sign} githubdl <link>*
 
       \`☛ 𝐓𝐎𝐎𝐋𝐒 𝐌𝐄𝐍𝐔 ☚\`
-*➼ vv*
-*➼ vv2*
-*➼ runtime*
-*➼ ping*
-*➼ areact*
-*➼ join*
-*➼ script*
-*➼ sticker*
-*➼ take*
-*➼ fancy*
-*➼ style*
-*➼ broadcast*
-*➼ exchange*
-*➼ translate*
-*➼ encode*
-*➼ decode*
-*➼ encrypt*
-*➼ svcontact*
-*➼ obfuscate*
-*➼ getsession*
+*${sign} vv*
+*${sign} vv2*
+*${sign} runtime*
+*${sign} ping*
+*${sign} areact*
+*${sign} join*
+*${sign} script*
+*${sign} sticker*
+*${sign} take*
+*${sign} fancy*
+*${sign} style*
+*${sign} broadcast*
+*${sign} exchange*
+*${sign} translate*
+*${sign} encode*
+*${sign} decode*
+*${sign} encrypt*
+*${sign} svcontact*
+*${sign} obfuscate*
+*${sign} getsession*
 
       \`☛ 𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔 ☚\`
-*➼ lyrics*
-*➼ google*
-*➼ happymod*
+*${sign} lyrics*
+*${sign} google*
+*${sign} happymod*
 
       \`☛ 𝐀𝐈 𝐌𝐄𝐍𝐔 ☚\`
-*➼ gemini*
-*➼ chatgpt*
-*➼ blackbox*
+*${sign} gemini*
+*${sign} chatgpt*
+*${sign} blackbox*
 
       \`☛ 𝐒𝐓𝐀𝐋𝐊𝐄𝐑 𝐌𝐄𝐍𝐔 ☚\`
-*➼ gitstalk*
-*➼ wachannel*
-*➼ tiktokstalk*
-*➼ freefirestalk*
-*➼ npmcheck*
+*${sign} gitstalk*
+*${sign} wachannel*
+*${sign} tiktokstalk*
+*${sign} freefirestalk*
+*${sign} npmcheck*
 
       \`☛ 𝐅𝐔𝐍 𝐌𝐄𝐍𝐔 ☚\`
-*➼ flirt*    
-*➼ truth*
-*➼ jokes*
-*➼ love*
-*➼ conf*
-*➼ angry*
-*➼ hrt*
+*${sign} flirt*    
+*${sign} truth*
+*${sign} jokes*
+*${sign} love*
+*${sign} conf*
+*${sign} angry*
+*${sign} rizz*
 
       \`☛ 𝐁𝐔𝐆 𝐌𝐄𝐍𝐔 ☚\`
-*➼ next update😑*
+*${sign} next update😑*
 `
 )}
   

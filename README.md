@@ -8,7 +8,7 @@
     <a href="https://raw.githubusercontent.com/Bolaolat/BLUE-DEMON-V2/refs/heads/main/bluex.jpg?token=GHSAT0AAAAAACZQ4WJCWH4DL3N6W5HFHMKMZ2GLAPQ"><img src="https://raw.githubusercontent.com/Bolaolat/BLUE-DEMON-V2/refs/heads/main/bluex.jpg?token=GHSAT0AAAAAACZQ4WJCWH4DL3N6W5HFHMKMZ2GLAPQ" alt="IMG-20240906-154743-430" border="0"></a>
 <p align="center">
 <pBLUEXDEMON-V4 align="center">
-<a href="[https://github.com/BLUEDEMONI/BLUEXDEMON-V4](https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.git)"><img title="Author" src="https://img.shields.io/badge/Rias Gremory-black?style=for-the-badge&logo=github"></a>
+<a href="https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.git"><img title="Author" src="https://img.shields.io/badge/Rias Gremory-black?style=for-the-badge&logo=github"></a>
 <p align="center">
 <a href="https://github.com/Toxic1239/followers"><img title="Followers" src="https://img.shields.io/github/followers/Toxic1239?color=blue&style=flat-square"></a>
 <a href="https://github.com/Toxic1239/Queen-RiasV2/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Toxic1239/Queen-RiasV2?color=red&style=flat-square"></a>

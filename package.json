@@ -11,7 +11,7 @@
  "scripts": {
   "start": "node index.js"
  },
- "author": "ehanz",
+ "author": "BLUE",
  "license": "MIT",
  "dependencies": {
   "@ffmpeg-installer/ffmpeg": "^1.1.0",

@@ -3,12 +3,12 @@
   
 ***
   
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=910&height=100&lines=THANKS FOR CHOOSING ;QUEEN+RIAS;MULTI+DEVICE+WHATSAPP+BOT;CREATED+BY+TOXXIC+BOY;RELEASED+28.09.24" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=50&pause=1000&color=1BAFBAFF&center=true&width=910&height=100&lines=THANKS FOR CHOOSING ;BLUEX+DEMON;MULTI+DEVICE+WHATSAPP+BOT;CREATED+BY+BLUE+DEMON;RELEASED+27.11.24" alt="Typing SVG" /></a>
   </p>
-    <a href="https://ibb.co/MsM8G1b"><img src="https://i.ibb.co/bPzH2vx/IMG-20240906-154743-430.jpg" alt="IMG-20240906-154743-430" border="0"></a>
+    <a href="https://raw.githubusercontent.com/Bolaolat/BLUE-DEMON-V2/refs/heads/main/bluex.jpg?token=GHSAT0AAAAAACZQ4WJCWH4DL3N6W5HFHMKMZ2GLAPQ"><img src="https://raw.githubusercontent.com/Bolaolat/BLUE-DEMON-V2/refs/heads/main/bluex.jpg?token=GHSAT0AAAAAACZQ4WJCWH4DL3N6W5HFHMKMZ2GLAPQ" alt="IMG-20240906-154743-430" border="0"></a>
 <p align="center">
-<pQUEEN-RIAS align="center">
-<a href="https://github.com/Toxic1239/Queen-RiasV2"><img title="Author" src="https://img.shields.io/badge/Rias Gremory-black?style=for-the-badge&logo=github"></a>
+<pBLUEXDEMON-V4 align="center">
+<a href="https://github.com/BLUEDEMONI/BLUEXDEMON-V4"><img title="Author" src="https://img.shields.io/badge/Rias Gremory-black?style=for-the-badge&logo=github"></a>
 <p align="center">
 <a href="https://github.com/Toxic1239/followers"><img title="Followers" src="https://img.shields.io/github/followers/Toxic1239?color=blue&style=flat-square"></a>
 <a href="https://github.com/Toxic1239/Queen-RiasV2/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Toxic1239/Queen-RiasV2?color=red&style=flat-square"></a>

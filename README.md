@@ -73,39 +73,35 @@ npm start
 -Contributions to BLUE-DEMON are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
 
 <br>
-    <a href='https://github.com/Toxic1239/Queen-RiasV2/issues/new/choose' target="_blank"><img alt='Railway' src='https://img.shields.io/badge/-REPORT ISSUE-red?style=for-the-badge&logo=railway&logoColor=white'/></a>
+    <a href='https://github.com/BLUEXDEMONl/BLUEXDEMON-V4/issues/new' target="_blank"><img alt='Railway' src='https://img.shields.io/badge/-REPORT ISSUE-red?style=for-the-badge&logo=railway&logoColor=white'/></a>
 
 
 ***
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>    
 
 ### LICENSE 
--The QUEEN-RIAS is released under the [MIT License](https://opensource.org/licenses/MIT).
+-The BLUE-DEMON is released under the [MIT License](https://opensource.org/licenses/MIT).
 
--Enjoy the diverse features of the QUEEN-RIAS  to enhance your conversations and make your WhatsApp experience more interesting!
+-Enjoy the diverse features of the BLUEXDEMON  to enhance your conversations and make your WhatsApp experience more interesting!
 
 ***
 ### DEVELOPER:
 **GET In Touch with The Owner**
-- [**On TELEGRAM**](https://t.me/Toxxicn_bot)
-- [**CHANNEL**](https://whatsapp.com/channel/0029Vao1R2n9sBIC9sPhvI1P) 
+- [**On WHATSAPP**](https://wa.me/2347041039367)
+- [**CHANNEL**](https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h) 
 ***
 ### WARNING
 
-- **QUEEN-RIAS is not made by `WhatsApp Inc.` Sometimes or misusing the bot might `ban` your `WhatsApp account!`*
+- **BLUEXDEMON is not made by `WhatsApp Inc.` Sometimes or misusing the bot might `ban` your `WhatsApp account!`*
 - *In that case, I'm not responsible for banning your account.*
-- *Use QUEEN-RIAS at your own risk by keeping this warning in mind.*
+- *Use BLUEXDEMON at your own risk by keeping this warning in mind.*
   
   #### ```TOTAL REPO VIEWS 🧚```
 ![Visitor Count](https://profile-counter.glitch.me/Riasgv2/count.svg)
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a><a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
- ## [WEBSITE](https://toxxic-site.vercel.app/) 
 ### THANKS TO:
 
-- Myself Toxxic For making This bot
-- B.m.b for his support and some cases added 
-- Veran For Support
-- Xeon for Some Cases
-- King for Fixing Some Cases 
+- Myself Blue For making This bot
+- Toxxic for his support and some cases added 

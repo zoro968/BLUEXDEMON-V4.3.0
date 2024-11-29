@@ -54,7 +54,37 @@ year: 'numeric'
 process.on('uncaughtException', console.error)
 const { createRequire } = require('module');
 const requireFromFile = createRequire(__filename);
+function connect(conn, PORT) {
+  
+app.enable('trust proxy')
+app.set("json spaces",2)
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.get('/', (req, res) => {
+  if (qrwa) return res.type('.jpg').send(qrwa)
+ //res.send('QRCODE BELUM TERSEDIA. SILAHKAN REFRESH TERUS MENERUS')
+ res.sendFile(__dirname + '/index.html');
+});
+app.listen(PORT, async() => {
+    console.log(`express listen on port ${PORT}`)
+})
 
+  
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+/*
+server.listen(PORT, () => {
+  console.log('listening on *: 3000');
+});
+*/
+}
 
 global.__filename = function filename(pathURL = __filename, rmPrefix = process.platform !== 'win32') {
     return rmPrefix ? /file:\/\/\//.test(pathURL) ? 
@@ -219,14 +249,14 @@ loadDatabase()
 
   
 const { state, saveCreds } = await useMultiFileAuthState("session")
-
+//const store = useStore? makeInMemoryStore({ logger: logg().child({ level: 'fatal', stream: 'store' }) }) : undefined
 const store = makeInMemoryStore({ logger: logg().child({ level: 'fatal', stream: 'store' }) })
 const { version, isLatest } = await fetchLatestBaileysVersion()
 if (global.db.data) await global.db.write() 
 
   
   
-
+//Function untuk update runtime di database
 setInterval(() => {
 let data = global.db.data.others['runtime']
 if(data){ 
@@ -245,7 +275,7 @@ console.log("New update runtime")
 },60_000)
 
   
-
+  //Funtion agar bisa pake button di bailey terbaru  
 const patchMessageBeforeSending = (message) => {
 const requiresPatch = !!(
 message.buttonsMessage ||
@@ -282,9 +312,10 @@ conversation: 'hello'
 }
 
 
-
+//Untuk menyimpan session  
 const auth = {
 creds: state.creds,
+/** caching membuat penyimpanan lebih cepat untuk mengirim/menerima pesan */
 keys: makeCacheableSignalKeyStore(state.keys, logg().child({ level: 'fatal', stream: 'store' })),
 }
  
@@ -303,7 +334,28 @@ if(pairingCode && !connectionOptions.authState.creds.registered) {
         }, 3000)
 
 }
+async function clearConsole() {
+    const isWindows = process.platform === 'win32';
+    const isLinuxOrMac = process.platform === 'linux' || process.platform === 'darwin';
 
+    return new Promise((resolve, reject) => {
+        const command = isWindows ? 'cls' : (isLinuxOrMac ? 'clear' : '');
+        if (command) {
+            require('child_process').exec(command, (error, stdout, stderr) => {
+                if (error) {
+                    console.error(error);
+                    reject(error);
+                } else {
+                    console.log(stdout);
+                    resolve();
+                }
+            });
+        } else {
+            console.log('Platform not supported for clearing console.');
+            resolve();
+        }
+    });
+}
  
 global.conn = simple.makeWASocket2(connectionOptions)
 connect(conn, PORT)
@@ -312,13 +364,13 @@ store.bind(conn.ev)
 conn.waVersion = version
 
 
-
+//welcome
 conn.ev.on('group-participants.update', async (anu) => {
 require('./message/group.js')(conn, anu)
 })
 
 
- 
+  //auto reject call
 conn.ev.on('call', (json) => { 
   const {id, from, status } = json[0]; 
   if (status == 'offer') {
@@ -439,22 +491,26 @@ let text = 'Bot is connected'
 await conn.sendMessage(from,{text},{quoted:m})  
 delete db.data.others['restart']
 }
-
+// kredensial diperbarui -- simpan
 if(events['creds.update']) { 
 await saveCreds()
 }
 
- 
+  
+
+// history received
 if(events['messaging-history.set']) {
 const { chats, contacts, messages, isLatest } = events['messaging-history.set']
 console.log(`recv ${chats.length} chats, ${contacts.length} contacts, ${messages.length} msgs (is latest: ${isLatest})`)
 			}  
   
 
+  
+//------------------------------------[BATAS]--------------------------------\\
 
 })
 
- 
+  //Function untuk update gempa BMKG
 let gempa = db.data.others['updateGempa']
 let data1 = db.data.others['infogempa']
 if(!gempa) db.data.others['updateGempa'] = []
@@ -528,9 +584,9 @@ conn.sendMessage(i,{image,caption})
  
 } 
 
-}, 60_000*10)
+}, 60_000*10)// akhir dari set interval
 
-}
+}// akhir dari gempa.length
 
 
 

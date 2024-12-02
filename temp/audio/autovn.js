@@ -14,8 +14,9 @@ exports.vnToxic = [
 "https://cdn.filestackcontent.com/lYHaYLVNS4G7QSagNEvX"
 ]
 exports.vnMenu = [
-"https://github.com/BLUEXDEMONl/BLUEDEMON-UPDATE-/raw/refs/heads/main/1000946154.mp3",
-"https://github.com/BLUEXDEMONl/BLUEDEMON-UPDATE-/raw/refs/heads/main/1000946154.mp3"
+"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056104.mp3",
+"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056128.mp3",
+"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056127.mp3"
 ]
 exports.vnOwner = [ 
 //gaboleh

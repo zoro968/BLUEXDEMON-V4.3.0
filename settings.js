@@ -2,12 +2,14 @@ const version = require("@whiskeysockets/baileys/package.json").version
 
 
 
-global.pairingNumber = "234704103936"
+global.pairingNumber = "2349019529423"
  
-global.botNumber = ["234704103936"]
+global.botNumber = ["2349019529423"]
 
-global.sign = "✘"
-// ☞ ➻ ➽ ☛ 
+global.anticall = true
+
+global.sign = "➜"
+// ☞ ➻ ➽ ☛ ✔
 
 
 
@@ -71941,7 +71943,7 @@ global.Intervalmsg = 1000
 global.gris = '`'
 global.fileStackApi ="AVKHbeyXsT0G9IKI01qenz"
 global.fotoRandom = [
-"https://wallpapers.com/images/high/might-guy-232xixhrqrsfbtrb.webp",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRG0p7OZbcj6g1wzkawJdu0en2JN7npJhiv-A&usqp=CAU",
 "https://wallpapers.com/images/high/might-guy-1336-x-768-fmt8uvn5c0bjhnxq.webp"]
 
 //Apikey Nya

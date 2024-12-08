@@ -1139,7 +1139,7 @@ module.exports = async (conn, dev, chatUpdate, store) => {
         }
         let ownerCommands = DataId.filter(item => item.name == "commands")
         for (let i of ownerCommands[0].id) {
-            if (command == i && !isOwner) return onlyOwner()
+            if (command == i && !isOwner) return setReply(mess.only.owner)
         }
 
         //FITUR USER LIMIT
@@ -3497,48 +3497,38 @@ Create At: ${new Date(creation * 1000).toLocaleString()}` + `${desc ? `\nDesc: $
                     break;
                 }
                 case 'tiktok':
-                case 'tt': {
-                    if (!q) return reply(`\`No Tiktok link detected\`\n*Example:  ${prefix + command} link*`);
-                    await loading()
-                    try {
-                        const data = await fetchJson(`https://api.tiklydown.eu.org/api/download?url=${encodeURIComponent(text)}`);
-                        const vidnya = data.video.noWatermark;
-                        const caption = `*[ TIKTOK DOWNLOADER ]*
+case 'tt': {
+    if (!q) return reply(`\`No Tiktok link detected\`\n*Example:  ${prefix + command} link*`);
+    await loading();
 
-\`𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 ${botname}\`
+    try {
+        // Fetching data from the new API
+        const response = await fetchJson(`https://api-lenwy.vercel.app/tiktok?url=${encodeURIComponent(q)}`);
+        const data = response.data;
+
+        // Constructing the caption with the relevant information
+        const caption = `*[ TIKTOK DOWNLOADER ]*
+
+*Title*: _${data.title}_
+*By*: _${data.creator}_
+
+> 𝙿𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝙱𝙻𝚄𝙴𝙳𝙴𝙼𝙾𝙽🐦‍🔥
 `;
-                        conn.sendMessage(m.chat, {
-                            caption: caption,
-                            video: {
-                                url: vidnya
-                            }
-                        }, {
-                            quoted: m
-                        })
-                    } catch {
-                        const response = await fetchJson(`https://api.tiklydown.eu.org/api/download/v3?url=${encodeURIComponent(q)}`);
-                        const videoUrl = response.result.video;
-                        const caption = `*[ TIKTOK DOWNLOADER ]*
 
-*Likes*: _${response.result.statistics.likeCount ?? ''}_
-*Comments*: _${response.result.statistics.commentCount ?? ''}_
-*Shares*: _${response.result.statistics.shareCount ?? ''}_
-*By*: _${response.result.author.nickname ?? ''}_
+        // Sending the video with no watermark and the constructed caption
+        conn.sendMessage(m.chat, {
+            caption: caption,
+            video: {
+                url: data.no_watermark
+            }
+        }, { quoted: m });
+    } catch (err) {
+        console.error("Error fetching TikTok data:", err);
+        reply("Error fetching the video. Please try again.");
+    }
 
-\`𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐃 𝐁𝐘 ${botName}\`
-        `;
-                        conn.sendMessage(m.chat, {
-                            caption: caption,
-                            video: {
-                                url: videoUrl
-                            }
-                        }, {
-                            quoted: m
-                        })
-                    }
-                    break;
-                }
-
+    break;
+}
                 case 'ig':
                 case 'instagram': {
                     try {
@@ -4009,73 +3999,75 @@ Create At: ${new Date(creation * 1000).toLocaleString()}` + `${desc ? `\nDesc: $
                 }
                 break;
                 case 'gemini': {
-                    if (!q) return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
+    if (!q) return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
 
-                    await loading();
+    await loading();
 
-                    try {
-                        // Construct API URL
-                        const apiUrl = `https://api.giftedtech.my.id/api/ai/geminiai?apikey=gifted&q=${encodeURIComponent(q)}`;
+    try {
+        // Construct API URL
+        const apiUrl = `https://api-lenwy.vercel.app/ai4chat?text=${encodeURIComponent(q)}`;
 
-                        // Fetch AI response
-                        const response = await fetch(apiUrl);
-                        const res = await response.json();
+        // Fetch AI response
+        const response = await fetch(apiUrl);
+        const res = await response.json();
 
-                        // Validate API response
-                        if (res.status !== 200 || !res.success) {
-                            return reply("Failed to process your request. Please try again later.");
-                        }
+        // Validate API response
+        if (res.status !== 200 || !res.data) {
+            return reply("Failed to process your request. Please try again later.");
+        }
 
-                        // Send AI response with the image
-                        const aiResponse = res.result;
-                        await conn.sendMessage(from, {
-                            image: {
-                                url: './database/blueimages/gemini.jpg'
-                            },
-                            caption: `*Gemini AI Response:*\n\n\`\`\`${aiResponse}\`\`\`\n> ${caption}`,
-                        }, {
-                            quoted: m
-                        });
-                    } catch (error) {
-                        console.error("Error in Gemini case:", error);
-                        reply("An error occurred while processing your request. Please try again later.");
-                    }
-                    break;
-                }
+        // Send AI response with the image
+        const aiResponse = res.data; // Extract response text
+        await conn.sendMessage(from, {
+            image: {
+                url: './database/blueimages/gemini.jpg' // Local image path
+            },
+            caption: `*Gemini AI Response:*\n\n\`\`\`${aiResponse}\`\`\`\n> ${caption}`,
+        }, { quoted: m });
+    } catch (error) {
+        console.error("Error in Gemini case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+    break;
+}
                 case 'chatgpt': {
-                    if (!q) return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
+    if (!q) {
+        return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
+    }
 
-                    await loading();
+    await loading();
 
-                    try {
-                        // Construct API URL
-                        const apiUrl = `https://api.giftedtech.my.id/api/ai/gpt4?apikey=gifted&q=${encodeURIComponent(q)}`;
+    try {
+        // Construct API URL
+        const apiUrl = `https://api-lenwy.vercel.app/ai4chat?text=${encodeURIComponent(q)}`;
 
-                        // Fetch AI response
-                        const response = await fetch(apiUrl);
-                        const res = await response.json();
+        // Fetch AI response
+        const response = await fetch(apiUrl);
+        const res = await response.json();
 
-                        // Validate API response
-                        if (res.status !== 200 || !res.success) {
-                            return reply("Failed to process your request. Please try again later.");
-                        }
+        // Validate API response
+        if (res.status !== 200 || !res.data) {
+            return reply("Failed to process your request. Please try again later.");
+        }
 
-                        // Send AI response with the image
-                        const aiResponse = res.result;
-                        await conn.sendMessage(from, {
-                            image: {
-                                url: './database/blueimages/chatgpt.jpg'
-                            },
-                            caption: `*ChatGPT Response:*\n\n\`\`\`${aiResponse}\`\`\`\n> ${caption}`,
-                        }, {
-                            quoted: m
-                        });
-                    } catch (error) {
-                        console.error("Error in ChatGPT case:", error);
-                        reply("An error occurred while processing your request. Please try again later.");
-                    }
-                    break;
-                }
+        // Extract AI response text
+        const aiResponse = res.data;
+
+        // Send AI response with the image
+        await conn.sendMessage(from, {
+            image: {
+                url: './database/blueimages/chatgpt.jpg', // Path to ChatGPT image
+            },
+            caption: `*ChatGPT Response:*\n\n\`\`\`${aiResponse}\`\`\``,
+        }, { quoted: m });
+
+    } catch (error) {
+        console.error("Error in ChatGPT case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+
+    break;
+}
                 case 'blackbox': {
                     if (!q) return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
 
@@ -5188,7 +5180,7 @@ Create At: ${new Date(creation * 1000).toLocaleString()}` + `${desc ? `\nDesc: $
                         });
 
                         // URL to download the ZIP file
-                        const zipUrl = 'https://github.com/BLUEXDEMONl/BLUEXDEMON-V4/archive/refs/heads/master.zip';
+                        const zipUrl = 'https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.3.0/archive/refs/heads/master.zip';
 
                         // Fetch the ZIP file
                         const response = await fetch(zipUrl);
@@ -5204,7 +5196,7 @@ Create At: ${new Date(creation * 1000).toLocaleString()}` + `${desc ? `\nDesc: $
                             document: zipBuffer,
                             mimetype: "application/zip",
                             fileName: `BLUEXDEMON-V4-master.zip`,
-                            caption: `*REPO LINK*: \`https://github.com/BLUEXDEMONl/BLUEXDEMON-V4\`\n*CHANNEL*: \`https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\``,
+                            caption: `*REPO LINK*: \`https://github.com/BLUEXDEMONl/BLUEXDEMON-V4.3.0\`\n*CHANNEL*: \`https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\``,
                         }, {
                             quoted: m
                         });
@@ -5847,6 +5839,862 @@ Create At: ${new Date(creation * 1000).toLocaleString()}` + `${desc ? `\nDesc: $
                     }
                     break;
                 }
+case 'invite': {
+    if (!isGroup) return setReply(mess.only.group);
+    if (!isBotGroupAdmins) return setReply(mess.only.badmin);
+    if (!text) return reply(`\`No WhatsApp number detected.\`\n*Example: ${prefix + command} 255734980103*`);
+    if (text.includes('+')) return reply(`\`Input the WhatsApp number without *+*\``);
+    if (isNaN(text)) return reply(`Please enter only numbers, including your country code, without spaces.`);
+
+    let group = m.chat;
+
+    try {
+        // Generate the group invite link
+        let link = 'https://chat.whatsapp.com/' + await conn.groupInviteCode(group);
+
+        // Send the invite link to the specified number
+        await conn.sendMessage(`${text}@s.whatsapp.net`, {
+            text: ` *𝙂𝙍𝙊𝙐𝙋 𝙄𝙉𝙑𝙄𝙏𝘼𝙏𝙄𝙊𝙉 𝙇𝙄𝙉𝙆*\n*\`𝚈𝙾𝚄 𝙰𝚁𝙴 𝙸𝙽𝚅𝙸𝚃𝙴𝙳 𝚃𝙾 𝙹𝙾𝙸𝙽: ${groupMetadata.subject}\`*\n*𝙻𝙸𝙽𝙺:* ${link}`
+        });
+
+        reply("*Group invitation link successfully sent.*");
+    } catch (error) {
+        console.error("Error in invite case:", error);
+        setReply("Failed to send the invite link. Please check the number and try again.");
+    }
+
+    break;
+}
+case 'glitchtext':
+case 'writetext':
+case 'advancedglow':
+case 'typographytext':
+case 'pixelglitch':
+case 'neonglitch':
+case 'flagtext':
+case 'flag3dtext':
+case 'deletingtext':
+case 'blackpinkstyle':
+case 'glowingtext':
+case 'underwatertext':
+case 'logomaker':
+case 'cartoonstyle':
+case 'papercutstyle':
+case 'watercolortext':
+case 'effectclouds':
+case 'blackpinklogo':
+case 'gradienttext':
+case 'summerbeach':
+case 'luxurygold':
+case 'multicoloredneon':
+case 'sandsummer':
+case 'galaxywallpaper':
+case '1917style':
+case 'makingneon':
+case 'royaltext':
+case 'freecreate':
+case 'galaxystyle':
+case 'lighteffects':{
+if (!q) return reply(`\`No Text detected\`\n*Example : ${prefix+command} Blue demon*`) 
+await loading()
+let link
+if (/glitchtext/.test(command)) link = 'https://en.ephoto360.com/create-digital-glitch-text-effects-online-767.html'
+if (/writetext/.test(command)) link = 'https://en.ephoto360.com/write-text-on-wet-glass-online-589.html'
+if (/advancedglow/.test(command)) link = 'https://en.ephoto360.com/advanced-glow-effects-74.html'
+if (/typographytext/.test(command)) link = 'https://en.ephoto360.com/create-typography-text-effect-on-pavement-online-774.html'
+if (/pixelglitch/.test(command)) link = 'https://en.ephoto360.com/create-pixel-glitch-text-effect-online-769.html'
+if (/neonglitch/.test(command)) link = 'https://en.ephoto360.com/create-impressive-neon-glitch-text-effects-online-768.html'
+if (/flagtext/.test(command)) link = 'https://en.ephoto360.com/nigeria-3d-flag-text-effect-online-free-753.html'
+if (/flag3dtext/.test(command)) link = 'https://en.ephoto360.com/free-online-american-flag-3d-text-effect-generator-725.html'
+if (/deletingtext/.test(command)) link = 'https://en.ephoto360.com/create-eraser-deleting-text-effect-online-717.html'
+if (/blackpinkstyle/.test(command)) link = 'https://en.ephoto360.com/online-blackpink-style-logo-maker-effect-711.html'
+if (/glowingtext/.test(command)) link = 'https://en.ephoto360.com/create-glowing-text-effects-online-706.html'
+if (/underwatertext/.test(command)) link = 'https://en.ephoto360.com/3d-underwater-text-effect-online-682.html'
+if (/logomaker/.test(command)) link = 'https://en.ephoto360.com/free-bear-logo-maker-online-673.html'
+if (/cartoonstyle/.test(command)) link = 'https://en.ephoto360.com/create-a-cartoon-style-graffiti-text-effect-online-668.html'
+if (/papercutstyle/.test(command)) link = 'https://en.ephoto360.com/multicolor-3d-paper-cut-style-text-effect-658.html'
+if (/watercolortext/.test(command)) link = 'https://en.ephoto360.com/create-a-watercolor-text-effect-online-655.html'
+if (/effectclouds/.test(command)) link = 'https://en.ephoto360.com/write-text-effect-clouds-in-the-sky-online-619.html'
+if (/blackpinklogo/.test(command)) link = 'https://en.ephoto360.com/create-blackpink-logo-online-free-607.html'
+if (/gradienttext/.test(command)) link = 'https://en.ephoto360.com/create-3d-gradient-text-effect-online-600.html'
+if (/summerbeach/.test(command)) link = 'https://en.ephoto360.com/write-in-sand-summer-beach-online-free-595.html'
+if (/luxurygold/.test(command)) link = 'https://en.ephoto360.com/create-a-luxury-gold-text-effect-online-594.html'
+if (/multicoloredneon/.test(command)) link = 'https://en.ephoto360.com/create-multicolored-neon-light-signatures-591.html'
+if (/sandsummer/.test(command)) link = 'https://en.ephoto360.com/write-in-sand-summer-beach-online-576.html'
+if (/galaxywallpaper/.test(command)) link = 'https://en.ephoto360.com/create-galaxy-wallpaper-mobile-online-528.html'
+if (/1917style/.test(command)) link = 'https://en.ephoto360.com/1917-style-text-effect-523.html'
+if (/makingneon/.test(command)) link = 'https://en.ephoto360.com/making-neon-light-text-effect-with-galaxy-style-521.html'
+if (/royaltext/.test(command)) link = 'https://en.ephoto360.com/royal-text-effect-online-free-471.html'
+if (/freecreate/.test(command)) link = 'https://en.ephoto360.com/free-create-a-3d-hologram-text-effect-441.html'
+if (/galaxystyle/.test(command)) link = 'https://en.ephoto360.com/create-galaxy-style-free-name-logo-438.html'
+if (/lighteffects/.test(command)) link = 'https://en.ephoto360.com/create-light-effects-green-neon-online-429.html'
+let haldwhd = await ephoto(link, q)
+conn.sendMessage(m.chat, { image: { url: haldwhd }, caption:`> ${caption}`}, { quoted: m })
+}
+break
+// Autoviewstatus function
+async function autoViewStatus() {
+    try {
+        if (global.autoswview === true) {
+            let statusList = await conn.fetchStatusUpdates();
+            for (let status of statusList) {
+                await conn.readStatus(status.id);
+            }
+        }
+    } catch (err) {
+        console.error("Error in autoViewStatus:", err);
+    }
+}
+
+// Autoviewstatus command handler
+case 'autostatus':
+case 'avs':
+case 'autoviewstatus': {
+    if (!isOwner) return reply(mess.only.owner); // Ensure only the owner can execute
+    if (!args[0]) return reply(`Example: ${prefix + command} on/off`);
+
+    if (args[0].toLowerCase() === 'on') {
+        global.autoswview = true;
+        reply('Successfully Activated Autoviewstatus.');
+    } else if (args[0].toLowerCase() === 'off') {
+        global.autoswview = false;
+        reply('Successfully Deactivated Autoviewstatus.');
+    } else {
+        reply('Invalid option. Use "on" or "off" to toggle Autoviewstatus.');
+    }
+    break;
+}
+
+// Automatically run autoViewStatus periodically (optional)
+setInterval(autoViewStatus, 5000); // Adjust the interval as needed (10 seconds here)
+case 'playstore': {
+    if (!q) return reply(`\`No search term detected\`\n*Example:  ${prefix + command} Freefire*`);
+    await loading();
+
+    try {
+        // Fetching data from the Play Store API
+        const response = await fetchJson(`https://api-lenwy.vercel.app/playstore?search=${encodeURIComponent(q)}`);
+        const data = response.data;
+
+        if (!data || data.length === 0) {
+            return reply("No results found for this search term.");
+        }
+
+        // Prepare the message with search results
+        let message = `*[ PLAY STORE SEARCH RESULTS ]*\n> ${caption}\n${readmore}`;
+
+        // Loop through the first 2 results and format the message
+        for (let i = 0; i < Math.min(2, data.length); i++) {
+            const app = data[i];
+            message += `*App Name*: _${app.nama}_
+*Developer*: _${app.developer}_
+*Rating*: _${app.rate}_
+*Link*: ${app.link}
+
+*Developer's Link*: ${app.link_dev}
+_______________________\n`;
+        }
+
+        // Send the image with the results as the caption
+        await conn.sendMessage(from, {
+            image: {
+                url: './database/blueimages/playstore.jpg' // Local image path
+            },
+            caption: message,
+        }, { quoted: m });
+
+    } catch (err) {
+        console.error("Error fetching Play Store data:", err);
+        reply("Error fetching the search results. Please try again.");
+    }
+
+    break;
+}
+case 'waifu' :
+case 'neko' :
+case 'trap' :
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+ let trap = await axios.get(`https://waifu.pics/api/nsfw/${command}`)       
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url:trap.data.url } }, { quoted: m })
+break
+
+case 'animespank':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+let waifud = await axios.get(`https://nekos.life/api/v2/img/spank`)     
+            await conn.sendMessage(m.chat, { caption:  `> ${caption}`, image: {url:waifud.data.url} },{ quoted:m }).catch(err => {
+                    return('Error!')
+                })
+break
+case 'gifblowjob':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+  let assss = await axios.get ("https://api.waifu.pics/nsfw/blowjob")
+    var bobuff = await fetchBuffer(assss.data.url)
+    var bogif = await buffergif(bobuff)
+    await conn.sendMessage(m.chat,{video:bogif, gifPlayback:true },{quoted:m}).catch(err => {
+    })
+    break
+case 'blowjob':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/blowjob.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'cuckold':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/cuckold.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'eba':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/eba.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'pussy':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/pussy.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'yuri':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/yuri.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'zettai':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/zettai.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'foot':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/foot.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'milf':
+if(!isGroup) return setReply(mess.only.group)
+if (!isAntiNsfw) return setReply(mess.nsfw)
+await loading()
+var ahegaonsfw = JSON.parse(fs.readFileSync('./database/nsfw/milf.json'))
+var xeonyresult = pickRandom(ahegaonsfw)
+conn.sendMessage(m.chat, { caption:`> ${caption}`, image: { url: xeonyresult.url } }, { quoted: m })
+break
+case 'nsfw':{
+if (!isGroup) return setReply(mess.only.group)
+if (!isGroupAdmins && !isOwner) return setReply(mess.only.admin)
+               if (args.length < 1) return setReply('*Enable or disable? Use: ᴏɴ/ᴏꜰꜰ*')
+               if (args[0] === 'on') {
+                  db.data.chats[from].nsfw = true
+                  setReply(`*\`${command} has been enabled in this group\`*`)
+       let warning = Ehztext(` 
+  *「 ⚠️ 𝐖𝐀𝐑𝐍𝐈𝐍𝐆 ⚠️ 」*\n\`\`\`The NSFW (Not Safe For Work) feature has been activated in this group. As a result, explicit content may be accessible through the bot. Please proceed with caution and ensure compliance with community guidelines.\`\`\`
+`)
+    m.reply(warning)
+               } else if (args[0] === 'off') {
+                  db.data.chats[from].nsfw = false
+ setReply(`*\`${command} has been disabled in this group\`*`)
+               }
+               }
+            break
+case 'aza': 
+case 'pay': 
+case 'acc': {
+    setReply(
+        `💳 *Banking Details* 💳\n\n🏦 *Bank Name:* *${bank}*\n🔢 *Acc Number:* *${accnumber}*\n👤 *Acc Name:* *${bankname}*`
+    );
+    break;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

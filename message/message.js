@@ -1,6 +1,7 @@
 module.exports = async (senderNumber, prefix, command, setReply) => {
     global.mess = {
         wait: '*`𝐏𝐑𝐎𝐂𝐄𝐒𝐒𝐈𝐍𝐆 𝐀 𝐒𝐄𝐂....`*',
+        nsfw: '*`𝐍𝐒𝐅𝐖 𝐈𝐒 𝐏𝐑𝐎𝐇𝐈𝐁𝐈𝐓𝐄𝐃 𝐈𝐍 𝐓𝐇𝐈𝐒 𝐆𝐑𝐎𝐔𝐏`*',
         success: '`𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋`',
         limit: `[❕] Your limit has run out\nIf you want unlimited limit, you can buy premium, for only 10 thousand you can buy unlimited limit for 3 months,\nPlease type ${prefix}owner to find out.`,
         only: {

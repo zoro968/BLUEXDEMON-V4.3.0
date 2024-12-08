@@ -120,18 +120,15 @@ exports.fitur = (prefix) => {
 ┇*${sign} mode*
 ┇*${sign} delete*
 ┇*${sign} read*
-┇*${sign} clearchat*
-┇*${sign} setbotname*
 ┇*${sign} setpp*
 ┇*${sign} block*
 ┇*${sign} unblock* 
 ┇*${sign} setbio*
-┇*${sign} listcase*
 ┇*${sign} update*
 ┇*${sign} restart*
 ┇*${sign} owner*
-┇*${sign} alive*
-┇*${sign} scan*
+┇*${sign} clearchat*
+┇*${sign} setbotname*
 ┗─────────────❐
 
 ┏─『 \`𝐆𝐑𝐎𝐔𝐏 𝐌𝐄𝐍𝐔\` 』
@@ -142,9 +139,9 @@ exports.fitur = (prefix) => {
 ┇*${sign} tag*
 ┇*${sign} tagme*
 ┇*${sign} kickall*
+┇*${sign} invite*
 ┇*${sign} gcinfo*
 ┇*${sign} setppgc*
-┇*${sign} setgcname*
 ┇*${sign} setdesc*
 ┇*${sign} getppgc*
 ┇*${sign} delppgc*
@@ -155,18 +152,19 @@ exports.fitur = (prefix) => {
 ┇*${sign} antidelete*
 ┇*${sign} antibot*
 ┇*${sign} unmute*
-┇*${sign} welcome*
-┇*${sign} tagadmin*
-┇*${sign} listadmin*
 ┇*${sign} revoke*
 ┇*${sign} promote*
 ┇*${sign} demote*
-┇*${sign} resetgclink*
-┇*${sign} opentime*
-┇*${sign} closetime*
 ┇*${sign} gclink*
 ┇*${sign} leavegc*
 ┇*${sign} listonline*
+┇*${sign} opentime*
+┇*${sign} closetime*
+┇*${sign} welcome*
+┇*${sign} tagadmin*
+┇*${sign} listadmin*
+┇*${sign} setgcname*
+┇*${sign} resetgclink*
 ┗─────────────❐
 
 ┏─『 \`𝐃𝐎𝐖𝐍𝐋𝐎𝐀𝐃𝐄𝐑𝐒\` 』
@@ -202,6 +200,7 @@ exports.fitur = (prefix) => {
 ┏─『 \`𝐒𝐄𝐀𝐑𝐂𝐇 𝐌𝐄𝐍𝐔\` 』
 ┇*${sign} lyrics*
 ┇*${sign} google*
+┇*${sign} playstore*
 ┇*${sign} happymod*
 ┇*${sign} pinterest*
 ┇*${sign} element*
@@ -237,18 +236,37 @@ exports.fitur = (prefix) => {
 ┇*${sign} alwaysonline*
 ┇*${sign} autotyping*
 ┇*${sign} autoreadchat*
-┇*${sign} broadcast*
+┇*${sign} autoviewstatus*
+┇*${sign} listcase*
+┇*${sign} alive*
+┇*${sign} scan*
 ┇*${sign} translate*
 ┇*${sign} encode*
 ┇*${sign} decode*
 ┇*${sign} encrypt*
 ┇*${sign} svcontact*
 ┇*${sign} obfuscate*
-┇*${sign} getsession*
-┇*${sign} exchange*
 ┇*${sign} checkip*
+┇*${sign} broadcast*
+┇*${sign} exchange*
 ┇*${sign} randomcolor*
+┇*${sign} getsession*
 ┇*${sign} checkcolor*
+┗─────────────❐
+
+┏─『 \`𝐍𝐒𝐅𝐖 𝐌𝐄𝐍𝐔\` 』
+┇*${sign} nsfw*
+┇*${sign} waifu*
+┇*${sign} neko*
+┇*${sign} trap*
+┇*${sign} blowjob*
+┇*${sign} cuckold*
+┇*${sign} eba*
+┇*${sign} pussy*
+┇*${sign} yuri*
+┇*${sign} zattai*
+┇*${sign} foot*
+┇*${sign} milf*
 ┗─────────────❐
 
 ┏─『 \`𝐁𝐔𝐆 𝐌𝐄𝐍𝐔\` 』
@@ -263,6 +281,39 @@ exports.fitur = (prefix) => {
 ┇*${sign} kill*
 ┇*${sign} astro-lock*
 ┇*${sign} blast*
+┗─────────────❐
+
+┏─『 \`𝐄𝐏𝐇𝐎𝐓𝐎 𝐌𝐄𝐍𝐔\` 』
+┇*${sign} writetext*  
+┇*${sign} glitchtext*  
+┇*${sign} pixelglitch*  
+┇*${sign} neonglitch*  
+┇*${sign} royaltext*  
+┇*${sign} flagtext*  
+┇*${sign} flag3dtext*  
+┇*${sign} glowingtext*  
+┇*${sign} logomaker*  
+┇*${sign} gradienttext*   
+┇*${sign} luxurygold*  
+┇*${sign} 1917style*  
+┇*${sign} freecreate*  
+┇*${sign} galaxystyle*  
+┇*${sign} lighteffects* 
+┇*${sign} makingneon*  
+┇*${sign} cartoonstyle*  
+┇*${sign} deletingtext*  
+┇*${sign} blackpinkstyle* 
+┇*${sign} papercutstyle*  
+┇*${sign} sandsummer*  
+┇*${sign} effectclouds*  
+┇*${sign} blackpinklogo*  
+┇*${sign} summerbeach*  
+┇*${sign} advancedglow*  
+┇*${sign} watercolortext*  
+┇*${sign} underwatertext*  
+┇*${sign} typographytext*  
+┇*${sign} galaxywallpaper*  
+┇*${sign} multicoloredneon*  
 ┗─────────────❐
 > ${caption}
 `)

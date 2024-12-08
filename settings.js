@@ -12,13 +12,21 @@ global.autoReadChat = false
 
 global.alwaysonline = true
 
+global.autoswview = false
+
 global.public = true
 
 global.autoreact = false
 
 global.autotyping = false
 
-global.sign = "➻"
+global.sign = "〆"
+// ☞ ➻ ➽ ☛ 〆 
+global.bank = "Opay"
+
+global.bankname = "BLUE"
+
+global.accnumber = "7041039367"
 // ☞ ➻ ➽ ☛ 〆 
 
 
@@ -72315,7 +72323,7 @@ global.fileStackApi ="AVKHbeyXsT0G9IKI01qenz"
 global.fotoRandom = [
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgC1d1LdE8t_W2mGbhUW1292Xi3ddt5xZacRdetnXpBOGLGHx0CmLQuTs&s=10",
 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfmBimlAEwpPR1twNZV6ClUXRHTGgD-tJMw&usqp=CAU",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPdPxZ-65JmHe_YEDvQ5ptzfrUeGIN7dgk5_rRRIyjIJEZHKBXULwGsVBY&s=10"]
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w8kkLRBc19chTKUU7FYSld3-XLlEipNqlg&usqp=CAU"]
 
 global.skizo = 'memberaja'
 global.Betabotz = 'LSd7Lq9S'

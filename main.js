@@ -472,7 +472,7 @@ const connectToWhatsApp = async () => {
                     image: {
                         url: './database/blueimages/bluex.jpg'
                     }, // Path to your image
-                    caption: `  *『 \`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\` 』*\n\n*\`CONNECTED SUCCESSFULLY\`*\n> Support us by following our channel\n https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\n\n \`\`\`wait for 30s\`\`\``
+                    caption: `  *『 \`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\` 』*\n\n  *\`𝚆𝙴𝙻𝙲𝙾𝙼𝙴 𝚃𝙾 𝙼𝚈 𝙳𝙾𝙼𝙰𝙸𝙽\`*\n \`\`\`Support us by following our channel\`\`\`\n https://whatsapp.com/channel/0029Vah3fKtCnA7oMPTPJm1h\n\n \`\`\`wait for 30s\`\`\``
                 });
 
                 success(`1`, `[■■■■■■■■■■■■■■■] Connected`)

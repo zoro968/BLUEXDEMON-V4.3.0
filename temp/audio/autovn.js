@@ -6,8 +6,8 @@ exports.vnToxic = [
 "https://cdn.filestackcontent.com/lYHaYLVNS4G7QSagNEvX"
 ]
 exports.vnMenu = [
-"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056104.mp3",
-"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056128.mp3",
+"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/first.mp3",
+"https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/second.mp3",
 "https://huggingface.co/spaces/BLUESERVER/DATABASE/resolve/main/1001056127.mp3"
 ]
 exports.vnOwner = [ 

@@ -72275,7 +72275,7 @@ global.accnumber = "7041039367"
 
 
 
-global.language = "id"
+global.language = "en"
 global.sessionName = "session"
 global.pairingCode = true 
 global.runWith = "*NODE JS*"
@@ -72338,10 +72338,10 @@ global.gcounti = {
 
 
 let d = new Date();
-      let locale = "id";
+      let locale = "en";
       let gmt = new Date(0).getTime() - new Date("1 January 2024").getTime();
       let week = d.toLocaleDateString(locale, { weekday: "long" });
-      const calender = d.toLocaleDateString("id", {
+      const calender = d.toLocaleDateString("en", {
       day: "numeric",
       month: "long",
       year: "numeric",

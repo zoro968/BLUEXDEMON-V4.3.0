@@ -58,13 +58,13 @@ if (runWith.includes("eplit")) {}
 const connect = require("./server.js")
 const PORT = process.env.PORT || 3000
 let d = new Date
-let locale = 'id'
+let locale = 'en'
 let gmt = new Date(0).getTime() - new Date('1 Januari 2021').getTime()
 let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(((d * 1) + gmt) / 84600000) % 5]
 let week = d.toLocaleDateString(locale, {
     weekday: 'long'
 })
-const calender = d.toLocaleDateString("id", {
+const calender = d.toLocaleDateString("en", {
     day: 'numeric',
     month: 'long',
     year: 'numeric'

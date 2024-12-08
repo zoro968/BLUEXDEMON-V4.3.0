@@ -12,7 +12,7 @@ const {
 const {
     kyun
 } = require("../lib/myfunc");
-moment.tz.setDefault("Africa/Lagos").locale("id");
+moment.tz.setDefault("Africa/Lagos").locale("en");
 
 const Ehztext = (text, style = 1) => {
     var abc = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
@@ -64,11 +64,11 @@ const more = String.fromCharCode(8206)
 const readmore = more.repeat(4001)
 
 
-let dt = moment(Date.now()).tz('Africa/Lagos').locale('id').format('a')
+let dt = moment(Date.now()).tz('Africa/Lagos').locale('en').format('a')
 const ucapanWaktu = "Selamat " + dt.charAt(0).toUpperCase() + dt.slice(1)
 
 let dot = new Date(new Date + 3600000)
-const dateIslamic = Intl.DateTimeFormat("id" + '-TN-u-ca-islamic', {
+const dateIslamic = Intl.DateTimeFormat("en" + '-TN-u-ca-islamic', {
     day: 'numeric',
     month: 'long',
     year: 'numeric'

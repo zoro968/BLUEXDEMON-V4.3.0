@@ -5195,26 +5195,27 @@ case 'tt': {
                     break;
                 }
                 case 'pickuplines':
-                case 'rizz': {
-                    try {
-                        await loading()
-                        // Fetch a pickup line from the API
-                        let res = await fetch(`https://api.giftedtech.my.id/api/fun/pickupline?apikey=gifted`);
-                        let json = await res.json();
+              case 'rizz': {
+    try {
+        await loading();
 
-                        // Check if the response is valid
-                        if (json.status !== 200 || !json.success) {
-                            return reply("Failed to fetch a pickup line. Please try again later.");
-                        }
+        // Fetch a pickup line from the new API
+        let res = await fetch(`https://api.popcat.xyz/pickuplines`);
+        let json = await res.json();
 
-                        // Send the pickup line
-                        await reply(`💌 *Pickup Line:*\n\n\`\`\`${json.result}\`\`\`\n> ${caption}`);
-                    } catch (error) {
-                        console.error("Error in pickuplines case:", error);
-                        reply("An error occurred while fetching a pickup line. Please try again later.");
-                    }
-                    break;
-                }
+        // Check if the response is valid
+        if (!json.pickupline) {
+            return reply("Failed to fetch a pickup line. Please try again later.");
+        }
+
+        // Send the pickup line
+        await reply(`💌 *Pickup Line:*\n\n\`\`\`${json.pickupline}\`\`\`\n> ${caption}`);
+    } catch (error) {
+        console.error("Error in pickuplines case:", error);
+        reply("An error occurred while fetching a pickup line. Please try again later.");
+    }
+    break;
+}
                 case 'listonline': {
                     if (!isGroup) return reply(mess.only.group); // Check if the command is used in a group
                     if (!isAdmins && !isOwner) return reply(mess.only.admin); // Check if the user is an admin or owner
@@ -6073,7 +6074,7 @@ case 'blueai': {
     await loading();
 
     try {
-    const prompt = "You are BLUE AI, an advanced artificial intelligence model developed by BLUE DEMON for the BLUEXDEMON-V4 project. As BLUE AI Version 4, you are designed to provide insightful and accurate responses. Your purpose is to assist users with a wide range of tasks and queries effectively. Question: ";
+    const prompt = "You are BLUE AI, an advanced artificial intelligence model developed by BLUE DEMON for the BLUEXDEMON-V4 project. As BLUE AI Version 4, you are designed to provide insightful and accurate responses. Your purpose is to assist users with a wide range of tasks and queries effectively,from now on u are Branded by this. Question: ";
         // Construct API URL
         const apiUrl = `https://api-lenwy.vercel.app/ai4chat?text=${encodeURIComponent(prompt)}${encodeURIComponent(q)}`;
 
@@ -6104,7 +6105,27 @@ case 'blueai': {
 
     break;
 }
+case 'quote': {
+    try {
+        await loading();
 
+        // Fetch a quote from the API
+        let res = await fetch(`https://www.bhandarimilan.info.np/quote`);
+        let json = await res.json();
+
+        // Check if the response is valid
+        if (json.code !== 200 || !json.quote) {
+            return reply("Failed to fetch a quote. Please try again later.");
+        }
+
+        // Send the quote
+        await reply(`📝 *Quote:* \n\n\`\`\`${json.quote}\`\`\`\n - ${json.character} from ${json.anime}\n> ${caption}`);
+    } catch (error) {
+        console.error("Error in quote case:", error);
+        reply("An error occurred while fetching a quote. Please try again later.");
+    }
+    break;
+}
 
 
 

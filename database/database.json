@@ -1,20 +1,15 @@
 {
   "allcommand": [
-    
+    "Ping"
   ],
-  "anonymous": [
-  ],
+  "anonymous": [],
   "blockcmd": [
     {
       "cmd": "caridoi"
     }
   ],
-  "banned": [
-
-  ],
-  "premium": [
-
-  ],
+  "banned": [],
+  "premium": [],
   "claim": [],
   "data": [
     {
@@ -88,333 +83,8 @@
   "antispam": [],
   "dashboard": [
     {
-      "cmd": "Ksk",
-      "succes": 1,
-      "failed": 1
-    },
-    {
-      "cmd": "Ms",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "O",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Help",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Helpmen",
-      "succes": 3,
-      "failed": 0
-    },
-    {
-      "cmd": ".am",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Jsj",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Bacot",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Totalfitur",
-      "succes": 4,
-      "failed": 0
-    },
-    {
-      "cmd": "Jwja",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Mam",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Unreg",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Tebakgambar",
-      "succes": 28,
-      "failed": 0
-    },
-    {
-      "cmd": "Ytmp4",
-      "succes": 4,
-      "failed": 0
-    },
-    {
-      "cmd": "Hidetag",
-      "succes": 5,
-      "failed": 0
-    },
-    {
-      "cmd": "Qc",
-      "succes": 4,
-      "failed": 0
-    },
-    {
-      "cmd": "Menu",
-      "succes": 26,
-      "failed": 0
-    },
-    {
-      "cmd": "Owner",
-      "succes": 4,
-      "failed": 0
-    },
-    {
-      "cmd": "Setppbot",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Play",
-      "succes": 21,
-      "failed": 2
-    },
-    {
-      "cmd": "Tt",
-      "succes": 5,
-      "failed": 0
-    },
-    {
-      "cmd": "Pin",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Tebakkata",
-      "succes": 73,
-      "failed": 0
-    },
-    {
-      "cmd": "Siapaaku",
-      "succes": 8,
-      "failed": 0
-    },
-    {
-      "cmd": "Tiktok",
-      "succes": 5,
-      "failed": 0
-    },
-    {
-      "cmd": "Smeme",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Game",
-      "succes": 5,
-      "failed": 0
-    },
-    {
-      "cmd": "Afk",
+      "cmd": "Ping",
       "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Buylimit",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Buyglimit",
-      "succes": 4,
-      "failed": 0
-    },
-    {
-      "cmd": "Limit",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Ttmp3",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Cekprem",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Susunkata",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Profil",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Self",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Bugmenuv1",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Kick",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Paptt",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Shop",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Setmenu",
-      "succes": 3,
-      "failed": 0
-    },
-    {
-      "cmd": "Nsfw",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Getcase",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Ytmp3",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Tekateki",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Closetime",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Cekkontol",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "On",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Stiker",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Tebaktebakan",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Kaga",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Elaina",
-      "succes": 3,
-      "failed": 0
-    },
-    {
-      "cmd": "Bugmenuv2",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "My",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Wallml",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "S",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Tagall",
-      "succes": 2,
-      "failed": 0
-    },
-    {
-      "cmd": "Me",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Ban",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Pekerjaan",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Intro",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Jadian",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Cekpacar",
-      "succes": 5,
-      "failed": 0
-    },
-    {
-      "cmd": "Tembak",
-      "succes": 1,
-      "failed": 0
-    },
-    {
-      "cmd": "Daftar",
-      "succes": 0,
-      "failed": 1
-    },
-    {
-      "cmd": "Anna",
-      "succes": 1,
       "failed": 0
     }
   ],
@@ -524,8 +194,8 @@
   "hittoday": [
     {
       "id": "run",
-      "expired": 1723308904557,
-      "totalcmd": 396
+      "expired": 1733814504561,
+      "totalcmd": 2
     }
   ],
   "clearchat": [
@@ -12113,6 +11783,24 @@
       "pc": 0,
       "grade": "Newbie",
       "autolevelup": true
+    },
+    "2349019529423@s.whatsapp.net": {
+      "name": "BLUE DEMON BACKUP",
+      "id": "2349019529423",
+      "date": "9 Desember 2024",
+      "exp": 100,
+      "level": 1,
+      "hit": 2,
+      "balance": 1000,
+      "limit": 30,
+      "glimit": 30,
+      "serial": "9ALT",
+      "lastclaim": 0,
+      "afk": -1,
+      "pc": 0,
+      "grade": "Newbie",
+      "autolevelup": false,
+      "afkReason": ""
     }
   },
   "chats": {
@@ -12661,11 +12349,91 @@
       "antiLink": true,
       "antiBadword": true,
       "antiwame": false
+    },
+    "120363360997367125@g.us": {
+      "name": [],
+      "add": 0,
+      "welcome": false,
+      "detect": false,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "desc": true,
+      "descUpdate": true,
+      "antibot": false,
+      "antiimage": false,
+      "antisticker": false,
+      "antiaudio": false,
+      "antivideo": false,
+      "autostiker": false,
+      "antilink": false,
+      "antilinkgc": false,
+      "antidelete": false,
+      "antiasing": false,
+      "banchat": false,
+      "expired": 0,
+      "antibadword": true,
+      "antispam": true,
+      "antitroli": false,
+      "antivirtex": false,
+      "antitoxic": false,
+      "antipromosi": false,
+      "antihidetag": false,
+      "viewonce": false,
+      "nsfw": false,
+      "rpg": false,
+      "clear": false,
+      "clearTime": 0,
+      "stiker": false,
+      "antiLink": false,
+      "antiBadword": true,
+      "antiwame": false
+    },
+    "120363341867053793@g.us": {
+      "name": "STARTECH™ BOT_ZONE😈",
+      "add": 0,
+      "welcome": false,
+      "detect": false,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "desc": true,
+      "descUpdate": true,
+      "antibot": false,
+      "antiimage": false,
+      "antisticker": false,
+      "antiaudio": false,
+      "antivideo": false,
+      "autostiker": false,
+      "antilink": false,
+      "antilinkgc": false,
+      "antidelete": false,
+      "antiasing": false,
+      "banchat": false,
+      "expired": 0,
+      "antibadword": true,
+      "antispam": true,
+      "antitroli": false,
+      "antivirtex": false,
+      "antitoxic": false,
+      "antipromosi": false,
+      "antihidetag": false,
+      "viewonce": false,
+      "nsfw": false,
+      "rpg": false,
+      "clear": false,
+      "clearTime": 0,
+      "stiker": false,
+      "antiLink": false,
+      "antiBadword": true,
+      "antiwame": false
     }
   },
   "settings": {
     "settingbot": {
-      "status": 1723308654901,
+      "status": 1733728572413,
       "setmenu": "document",
       "docType": "docx",
       "Qoted": "ftoko",
@@ -12712,15 +12480,13 @@
   },
   "others": {
     "runtime": {
-      "runtime": 1723173089675,
-      "lastTime": 1723308642095
+      "runtime": 1733727621851,
+      "lastTime": 1733728582150
     },
-    "updateGempa": [
-      "120363162611448409@g.us"
-    ],
+    "updateGempa": [],
     "infogempa": {
-      "lokasi": "Pusat gempa berada di darat 63 km tenggara Tarakan",
-      "waktu": "15:20:23 WIB"
+      "lokasi": "Pusat gempa berada di darat 12 km Timur Laut Ngawi",
+      "waktu": "07:06:34 WIB"
     }
   },
   "respon": {

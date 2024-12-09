@@ -2873,23 +2873,36 @@ ${isWin ? `@${winner.split('@')[0]} *MENANG!*` : isTie ? `*HASIL SERI*` : `Gilir
                 }
                 break
                 case 'kick': {
-                    if (!isGroup) return setReply(mess.only.group);
-                    await loading()
-                    if (!isBotGroupAdmins) return reply(mess.only.Badmin);
-                    if (!isGroupAdmins && !isOwner) return reply(mess.only.admin);
+    if (!isGroup) return setReply(mess.only.group); // Ensure the command is used in a group
+    await loading();
+    if (!isBotGroupAdmins) return setReply(mess.only.Badmin); // Ensure bot is a group admin
+    if (!isGroupAdmins && !isOwner) return setReply(mess.only.admin); // Ensure the user is an admin or owner
 
-                    const mentioned = mentionByTag || (args[0] ? [`${args[0]}@s.whatsapp.net`] : []);
-                    if (mentioned.length === 0) return reply('Please tag or provide the number of the user to kick.');
+    let mentioned = [];
+    if (m.quoted) {
+        // If replying to a user's message, add their ID
+        mentioned = [m.quoted.sender];
+    } else if (mentionByTag && mentionByTag.length > 0) {
+        // If tagging users, add their IDs
+        mentioned = mentionByTag;
+    } else if (args[0]) {
+        // If providing a number, format it to a WhatsApp ID
+        mentioned = [`${args[0].replace(/[^0-9]/g, '')}@s.whatsapp.net`];
+    }
 
-                    try {
-                        await conn.groupParticipantsUpdate(m.chat, mentioned, 'remove');
-                        reply(`Successfully kicked ${mentioned.map(v => `@${v.split('@')[0]}`).join(', ')}`, mentioned);
-                    } catch (error) {
-                        reply('Failed to kick the user. Make sure I have the correct permissions.');
-                        console.error(error);
-                    }
-                    break;
-                }
+    if (mentioned.length === 0) {
+        return setReply('Please reply to a user, tag someone, or provide a number to kick.');
+    }
+
+    try {
+        await conn.groupParticipantsUpdate(m.chat, mentioned, 'remove'); // Kick the mentioned users
+        setReply(`Successfully kicked ${mentioned.map(v => `@${v.split('@')[0]}`).join(', ')}`, { mentions: mentioned });
+    } catch (error) {
+        console.error('Error in kick case:', error);
+        setReply('Failed to kick the user. Make sure I have the correct permissions.');
+    }
+    break;
+}
                 case 'add': {
                     if (!isGroup) return setReply(mess.only.group);
                     if (!isBotGroupAdmins) return setReply(mess.only.badmin);

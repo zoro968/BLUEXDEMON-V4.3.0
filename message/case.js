@@ -290,7 +290,7 @@ module.exports = async (conn, dev, chatUpdate, store) => {
     //console.log(chatUpdate.messages)
     var multi = db.data.settings['settingbot'].multi
     const m = dev
-    var Ownerin = "2349019529423@s.whatsapp.net"
+    var Ownerin = "@s.whatsapp.net"
     var ownerNumber = [`${botNumber}@s.whatsapp.net`, `2347041039367@s.whatsapp.net`, `${conn.user.jid}`]
     const Tnow = (new Date() / 1000).toFixed(0)
     const seli = Tnow - m.messageTimestamp.low

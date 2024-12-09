@@ -1,7 +1,5 @@
 const version = require("@whiskeysockets/baileys/package.json").version
 
-
-
 global.pairingNumber = "2349019529423"
  
 global.botNumber = ["2349019529423"]
@@ -27,7 +25,7 @@ global.bank = "Opay"
 global.bankname = "BLUE"
 
 global.accnumber = "7041039367"
-// ☞ ➻ ➽ ☛ 〆 
+
 
 
 
@@ -72278,7 +72276,7 @@ global.accnumber = "7041039367"
 global.language = "en"
 global.sessionName = "session"
 global.pairingCode = true 
-global.runWith = "*NODE JS*"
+global.runWith = "𝙽𝙾𝙳𝙴.𝙹𝚂"
 global.newsletterJid = "120363304326105871@newsletter"
 global.newsletterName = "𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒"
 global.ownerName = "𝐁𝐋𝐔𝐄 𝐃𝐄𝐌𝐎𝐍"

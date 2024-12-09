@@ -15,10 +15,10 @@ const {
 moment.tz.setDefault("Africa/Lagos").locale("en");
 
 const Ehztext = (text, style = 1) => {
-    var abc = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
-    var ehz = {
-        1: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ1234567890'
-    };
+  var abc = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
+  var ehz = {
+    1: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ1234567890'
+  };
     var replacer = [];
     abc.map((v, i) =>
         replacer.push({
@@ -91,7 +91,7 @@ const feat = (q) => {
 
 
 
-exports.allmenu = (limitCount, isPremium, thisHit, publik, sender, prefix, pushname) => {
+exports.allmenu = (limitCount, isPremium, publik, sender, prefix, pushname) => {
     try {
         var saldo = db.data.users[sender].balance.toLocaleString()
     } catch {
@@ -99,13 +99,13 @@ exports.allmenu = (limitCount, isPremium, thisHit, publik, sender, prefix, pushn
     }
     return Ehztext(`
        *『 \`𝘽𝙇𝙐𝙀 𝙓 𝘿𝙀𝙈𝙊𝙉\` 』*
-> ■ 𝐍𝐀𝐌𝐄  :  ${pushname}
-> ■ 𝐒𝐓𝐀𝐓𝐔𝐒 :  ${isPremium ? '𝐏𝐫𝐞𝐦𝐢𝐮𝐦':'𝐅𝐫𝐞𝐞'}
-> ■ 𝐌𝐎𝐃𝐄 : ${publik ? "𝐏𝐮𝐛𝐥𝐢𝐜" : "𝐒𝐞𝐥𝐟"}
-> ■ 𝐏𝐑𝐄𝐅𝐈𝐗 : ${prefix}
-> ■ 𝐑𝐔𝐍 𝐈𝐍 : ${runWith} 
-> ■ 𝐃𝐀𝐓𝐄 :  *${calender}*
-> ■ 𝐓𝐈𝐌𝐄 :  *${timeWib}*
+> ■ 𝙽𝙰𝙼𝙴  :  ${pushname}
+> ■ 𝚂𝚃𝙰𝚃𝚄𝚂 :  ${isPremium ? '𝐏𝐫𝐞𝐦𝐢𝐮𝐦':'𝐅𝐫𝐞𝐞'}
+> ■ 𝙼𝙾𝙳𝙴 : ${publik ? "𝐏𝐮𝐛𝐥𝐢𝐜" : "𝐒𝐞𝐥𝐟"}
+> ■ 𝙿𝚁𝙴𝙵𝙸𝚇 : ${prefix}
+> ■ 𝚁𝚄𝙽 𝙸𝙽 : ${runWith} 
+> ■ 𝙳𝙰𝚃𝙴 :  *${calender}*
+> ■ 𝚃𝙸𝙼𝙴 :  *${timeWib}*
  ${readmore}`)
 }
 
@@ -208,6 +208,7 @@ exports.fitur = (prefix) => {
 ┗─────────────❐
 
 ┏─『 \`𝐀𝐈 𝐌𝐄𝐍𝐔\` 』
+┇*${sign} blueai*
 ┇*${sign} gemini*
 ┇*${sign} chatgpt*
 ┇*${sign} blackbox*

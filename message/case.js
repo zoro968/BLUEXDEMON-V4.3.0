@@ -651,10 +651,10 @@ module.exports = async (conn, dev, chatUpdate, store) => {
 
         // Pengubah teks
         const Ehztext = (text, style = 1) => {
-            var abc = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
-            var ehz = {
-                1: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ1234567890'
-            };
+  var abc = 'abcdefghijklmnopqrstuvwxyz1234567890'.split('');
+  var ehz = {
+    1: 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ1234567890'
+  };
             var replacer = [];
             abc.map((v, i) =>
                 replacer.push({
@@ -2460,7 +2460,7 @@ ${isWin ? `@${winner.split('@')[0]} *MENANG!*` : isTie ? `*HASIL SERI*` : `Gilir
                         allmenu,
                         fitur
                     } = require('./help')
-                    let menunya = allmenu(limitCount, isPremium, thisHit, publik, sender, prefix, pushname)
+                    let menunya = allmenu(limitCount, isPremium, publik, sender, prefix, pushname)
                     let fiturnya = fitur()
                     let data = global.db.data.others['runtime']
                     let time = (new Date - data.runtime) || "Not detected"
@@ -6052,7 +6052,45 @@ case 'acc': {
     );
     break;
 }
+case 'blueai': {
+    if (!q) {
+        return reply(`*Please provide a query.*\n\n*Example:* ${prefix + command} Hello, which model are you?`);
+    }
 
+    await loading();
+
+    try {
+    const prompt = "You are BLUE AI, an advanced artificial intelligence model developed by BLUE DEMON for the BLUEXDEMON-V4 project. As BLUE AI Version 4, you are designed to provide insightful and accurate responses. Your purpose is to assist users with a wide range of tasks and queries effectively. Question: ";
+        // Construct API URL
+        const apiUrl = `https://api-lenwy.vercel.app/ai4chat?text=${encodeURIComponent(prompt)}${encodeURIComponent(q)}`;
+
+        // Fetch AI response
+        const response = await fetch(apiUrl);
+        const res = await response.json();
+
+        // Validate API response
+        if (res.status !== 200 || !res.data) {
+            return reply("Failed to process your request. Please try again later.");
+        }
+
+        // Extract AI response text
+        const aiResponse = res.data;
+
+        // Send AI response with the image
+        await conn.sendMessage(from, {
+            image: {
+                url: './database/blueimages/thumb.jpeg', // Path to ChatGPT image
+            },
+            caption: `*BLUE AI Response:*\n\n\`\`\`${aiResponse}\`\`\``,
+        }, { quoted: m });
+
+    } catch (error) {
+        console.error("Error in BLUE Ai case:", error);
+        reply("An error occurred while processing your request. Please try again later.");
+    }
+
+    break;
+}
 
 
 

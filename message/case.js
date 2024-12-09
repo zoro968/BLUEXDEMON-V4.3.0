@@ -2495,7 +2495,7 @@ ${isWin ? `@${winner.split('@')[0]} *MENANG!*` : isTie ? `*HASIL SERI*` : `Gilir
                                 externalAdReply: {
                                     showAdAttribution: true,
                                     title: `${botName}`,
-                                    body: `Version 4.2.0 ❤️‍🔥`,
+                                    body: `Version 4.3.0 ❤️‍🔥`,
                                     previewType: "PHOTO",
                                     thumbnailUrl: pickRandom(fotoRandom),
                                     sourceUrl: `${web}`

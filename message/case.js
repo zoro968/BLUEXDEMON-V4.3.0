@@ -415,74 +415,6 @@ module.exports = async (conn, dev, chatUpdate, store) => {
             let time = d > 0 ? dDisplay + hDisplay + mDisplay + sDisplay : hDisplay + mDisplay + sDisplay
             return time
         }
-
-        //if(selectedText == "register"){
-        if (isCmd) {
-            if (user) {
-                if (!('name' in user)) user.name = pushname
-                if (!('id' in user)) user.id = senderNumber
-                if (!isNumber(user.exp)) user.exp = 0
-                if (!isNumber(user.level)) user.level = 1
-                if (!isNumber(user.hit)) user.hit = 1
-                if (!isNumber(user.balance)) user.balance = 1000
-                if (!isNumber(user.limit)) user.limit = 30
-                if (!isNumber(user.glimit)) user.glimit = 30
-                if (!('serial' in user)) user.serial = makeid(4)
-                if (!isNumber(user.afk)) user.afk = -1
-                if (!('afkReason' in user)) user.afkReason = ''
-                if (!isNumber(user.lastclaim)) user.lastclaim = 0
-                if (!isNumber(user.pc)) user.pc = 0
-                if (!('autolevelup' in user)) user.autolevelup = false
-                if (!isNumber(user.pc)) user.pc = 0
-                if (!user.grade) user.grade = 'Newbie'
-
-            } else {
-                global.db.data.users[m.sender] = {
-                    name: pushname,
-                    id: senderNumber,
-                    date: calender,
-                    exp: 100,
-                    level: 1,
-                    hit: 0,
-                    balance: 1000,
-                    limit: 30,
-                    glimit: 30,
-                    serial: makeid(4).toUpperCase(),
-                    lastclaim: 0,
-                    afk: -1,
-                    pc: 0,
-                    grade: 'Newbie',
-                    autolevelup: false
-                }
-
-                let me = m.sender
-                let anu = "https://wallpapers.com/images/high/might-guy-1920-x-1080-ekgrtxxv50obyyl9.webp";
-
-                let contextInfo = {
-                    externalAdReply: {
-                        showAdAttribution: false,
-                        title: "Saved to database",
-                        mediaType: 1,
-                        renderLargerThumbnail: true,
-                        thumbnailUrl: anu,
-                    },
-                };
-                let teks = `  *❯❯ ＢＬＵＥ ＤＥＭＯＮ ❮❮*
- 
-*👤 Name: ${pushname}*
-*☎️ Number: ${senderNumber}*
-*📡 Serial: ${db.data.users[m.sender].serial}*
-*📍 Verified: ${calender}*
- `
-                await sleep(1000)
-                conn.sendMessage(m.chat, {
-                    contextInfo,
-                    text: teks
-                }, {
-                    quoted: m
-                })
-            }
-        } //if (typeof chat !== 'object') global.db.data.chats[m.chat] = {}
         if (isGroup && chat) {
             if (!('name' in chat)) chat.name = groupNmae
             if (!isNumber(chat.add)) chat.add = 0
@@ -1160,14 +1092,6 @@ module.exports = async (conn, dev, chatUpdate, store) => {
                 }
 
             }
-        }
-        //Auto Hit 
-        expiredCmd(hitnya, dash)
-        const thisHit = `${getHit("run", hitnya)}`
-        if (isCmd) {
-            db.data.users[sender].hit += 1
-            cmdAdd("run", "1d", hitnya)
-            Succes(toFirstCase(command), dash, allcommand)
         }
         //××××××××××××××××{××××//
         const addSpammer = function(jid, _db) {

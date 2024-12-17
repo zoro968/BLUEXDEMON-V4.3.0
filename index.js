@@ -1,1 +1,65 @@
-const _0x5836fc=_0x4b1d;(function(_0x1d56f8,_0x6b491){const _0x23b751=_0x4b1d,_0x4a50bb=_0x1d56f8();while(!![]){try{const _0x1d60b0=-parseInt(_0x23b751(0xf9))/0x1*(parseInt(_0x23b751(0xf5))/0x2)+-parseInt(_0x23b751(0xdb))/0x3*(parseInt(_0x23b751(0xf6))/0x4)+parseInt(_0x23b751(0xdf))/0x5+parseInt(_0x23b751(0xe1))/0x6*(parseInt(_0x23b751(0xef))/0x7)+-parseInt(_0x23b751(0xf0))/0x8+parseInt(_0x23b751(0xff))/0x9+parseInt(_0x23b751(0xd9))/0xa*(parseInt(_0x23b751(0xda))/0xb);if(_0x1d60b0===_0x6b491)break;else _0x4a50bb['push'](_0x4a50bb['shift']());}catch(_0x52b873){_0x4a50bb['push'](_0x4a50bb['shift']());}}}(_0xe88d,0x8024a));const moment=require('moment-timezone');function _0xe88d(){const _0x27fe92=['yargs/yargs','socket.io','kill','emit','argv','readline','apply','null','watchFile','fork','error','720587jgxdOJ','8152240ZwTLQs','exitProcess','join','process','test','16OQiOJm','1851324jXSEaY','cluster','listenerCount','68422wPEpCt','exit','parse','stdout','Exited\x20with\x20code:','http','1134756BfXYJY','setupMaster','path','log','2797070UUdSnV','77vqZrEH','6HsdNJU','main.js','line','stdin','2091020oLGukk','message','30bZckVA','unwatchFile','slice'];_0xe88d=function(){return _0x27fe92;};return _0xe88d();}let cluster=require(_0x5836fc(0xf7)),path=require(_0x5836fc(0x101)),fs=require('fs');const {createServer}=require(_0x5836fc(0xfe)),{Server}=require(_0x5836fc(0xe5)),Readline=require(_0x5836fc(0xe9)),yargs=require(_0x5836fc(0xe4)),rl=Readline['createInterface'](process[_0x5836fc(0xde)],process[_0x5836fc(0xfc)]);var isRunning=![];function start(_0x55537e){const _0x4e8b7a=_0x5836fc;if(isRunning)return;isRunning=!![];let _0x2f5be6=[path[_0x4e8b7a(0xf2)](__dirname,_0x55537e),...process[_0x4e8b7a(0xe8)][_0x4e8b7a(0xe3)](0x2)];cluster[_0x4e8b7a(0x100)]({'exec':path[_0x4e8b7a(0xf2)](__dirname,_0x55537e),'args':_0x2f5be6[_0x4e8b7a(0xe3)](0x1)});let _0x4bc878=cluster[_0x4e8b7a(0xed)]();_0x4bc878['on'](_0x4e8b7a(0xe0),_0x39cbc4=>{const _0xceb38f=_0x4e8b7a;console[_0xceb38f(0x102)]('[RECEIVED]',_0x39cbc4);switch(_0x39cbc4){case'reset':_0x4bc878[_0xceb38f(0xf3)][_0xceb38f(0xe6)](),isRunning=![],start[_0xceb38f(0xea)](this,arguments);break;case _0xceb38f(0xeb):_0x4bc878[_0xceb38f(0xf3)][_0xceb38f(0xe6)](),isRunning=![],start[_0xceb38f(0xea)](this,arguments);break;}}),_0x4bc878['on']('exit',(_0x2a467b,_0x38414d)=>{const _0x10edff=_0x4e8b7a;if(_0x38414d==null)process[_0x10edff(0xfa)]();isRunning=![],console[_0x10edff(0xee)](_0x10edff(0xfd),_0x38414d);if(_0x38414d===0x0)return;fs[_0x10edff(0xec)](_0x2f5be6[0x0],()=>{const _0x4bcbc3=_0x10edff;fs[_0x4bcbc3(0xe2)](_0x2f5be6[0x0]),start(_0x55537e);});});let _0x3aff8f=new Object(yargs(process[_0x4e8b7a(0xe8)][_0x4e8b7a(0xe3)](0x2))[_0x4e8b7a(0xf1)](![])[_0x4e8b7a(0xfb)]());if(!_0x3aff8f[_0x4e8b7a(0xf4)]){if(!rl[_0x4e8b7a(0xf8)]())rl['on'](_0x4e8b7a(0xdd),_0x2fb5d6=>{const _0x389a0a=_0x4e8b7a;_0x4bc878[_0x389a0a(0xe7)](_0x389a0a(0xe0),_0x2fb5d6['trim']());});}}function _0x4b1d(_0x1d5b89,_0x47447e){const _0xe88d82=_0xe88d();return _0x4b1d=function(_0x4b1d67,_0x129bc4){_0x4b1d67=_0x4b1d67-0xd9;let _0x2ce692=_0xe88d82[_0x4b1d67];return _0x2ce692;},_0x4b1d(_0x1d5b89,_0x47447e);}start(_0x5836fc(0xdc));
+const moment = require("moment-timezone")
+let cluster = require('cluster')
+let path = require('path')
+let fs = require('fs')
+const {
+    createServer
+} = require("http");
+const {
+    Server
+} = require("socket.io");
+const Readline = require('readline')
+const yargs = require('yargs/yargs')
+const rl = Readline.createInterface(process.stdin, process.stdout)
+
+var isRunning = false
+function start(file) {
+    if (isRunning) return
+    isRunning = true
+    let args = [path.join(__dirname, file), ...process.argv.slice(2)]
+    cluster.setupMaster({
+        exec: path.join(__dirname, file),
+        args: args.slice(1),
+    })
+    let p = cluster.fork()
+    p.on('message', data => {
+        console.log('[RECEIVED]', data)
+
+        switch (data) {
+
+
+            case 'reset':
+                p.process.kill()
+                isRunning = false
+                start.apply(this, arguments)
+                break
+
+
+            case 'null':
+                p.process.kill()
+                isRunning = false
+                start.apply(this, arguments)
+                break
+
+
+        }
+    })
+    p.on('exit', (_, code) => {
+        if (code == null) process.exit()
+        isRunning = false
+        console.error('Exited with code:', code)
+
+        if (code === 0) return
+        fs.watchFile(args[0], () => {
+            fs.unwatchFile(args[0])
+            start(file)
+        })
+    })
+    let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+    if (!opts['test'])
+        if (!rl.listenerCount()) rl.on('line', line => {
+            p.emit('message', line.trim())
+        })
+}
+
+start('main.js')

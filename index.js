@@ -1,1 +1,65 @@
-const _0x1cb0c5=_0x2151;(function(_0x303e27,_0x268468){const _0x112250=_0x2151,_0x4c7e90=_0x303e27();while(!![]){try{const _0x4d0c8c=parseInt(_0x112250(0x205))/0x1+parseInt(_0x112250(0x1f2))/0x2*(parseInt(_0x112250(0x1ff))/0x3)+parseInt(_0x112250(0x207))/0x4+parseInt(_0x112250(0x209))/0x5*(-parseInt(_0x112250(0x211))/0x6)+parseInt(_0x112250(0x20e))/0x7*(-parseInt(_0x112250(0x1eb))/0x8)+parseInt(_0x112250(0x1fd))/0x9+-parseInt(_0x112250(0x1ee))/0xa;if(_0x4d0c8c===_0x268468)break;else _0x4c7e90['push'](_0x4c7e90['shift']());}catch(_0x5e14a6){_0x4c7e90['push'](_0x4c7e90['shift']());}}}(_0xa8c1,0xf18f9));const moment=require('moment-timezone');let cluster=require(_0x1cb0c5(0x210)),path=require('path'),fs=require('fs');const {createServer}=require(_0x1cb0c5(0x1f0)),{Server}=require(_0x1cb0c5(0x1f3)),Readline=require(_0x1cb0c5(0x20d)),yargs=require(_0x1cb0c5(0x1f8)),rl=Readline[_0x1cb0c5(0x1f9)](process['stdin'],process['stdout']);var isRunning=![];function start(_0x53fd86){const _0x37682a=_0x1cb0c5;if(isRunning)return;isRunning=!![];let _0x4195cf=[path[_0x37682a(0x1f6)](__dirname,_0x53fd86),...process['argv'][_0x37682a(0x20b)](0x2)];cluster['setupMaster']({'exec':path['join'](__dirname,_0x53fd86),'args':_0x4195cf[_0x37682a(0x20b)](0x1)});let _0x1e9955=cluster[_0x37682a(0x208)]();_0x1e9955['on'](_0x37682a(0x201),_0x12b84c=>{const _0x28a48c=_0x37682a;console[_0x28a48c(0x1f1)](_0x28a48c(0x1f5),_0x12b84c);switch(_0x12b84c){case'reset':_0x1e9955[_0x28a48c(0x20c)][_0x28a48c(0x206)](),isRunning=![],start['apply'](this,arguments);break;case _0x28a48c(0x1ed):_0x1e9955[_0x28a48c(0x20c)][_0x28a48c(0x206)](),isRunning=![],start[_0x28a48c(0x1fa)](this,arguments);break;}}),_0x1e9955['on'](_0x37682a(0x1ec),(_0x555f59,_0x57d025)=>{const _0x3e635f=_0x37682a;if(_0x57d025==null)process[_0x3e635f(0x1ec)]();isRunning=![],console[_0x3e635f(0x20a)](_0x3e635f(0x1fb),_0x57d025);if(_0x57d025===0x0)return;fs[_0x3e635f(0x200)](_0x4195cf[0x0],()=>{const _0x3ccd42=_0x3e635f;fs[_0x3ccd42(0x1fe)](_0x4195cf[0x0]),start(_0x53fd86);});});let _0x396b27=new Object(yargs(process[_0x37682a(0x204)][_0x37682a(0x20b)](0x2))[_0x37682a(0x1f7)](![])[_0x37682a(0x1fc)]());if(!_0x396b27[_0x37682a(0x203)]){if(!rl[_0x37682a(0x212)]())rl['on'](_0x37682a(0x1f4),_0x5f1c3d=>{const _0x53e0d8=_0x37682a;_0x1e9955[_0x53e0d8(0x1ef)](_0x53e0d8(0x201),_0x5f1c3d[_0x53e0d8(0x20f)]());});}}function _0x2151(_0x301f90,_0x460767){const _0xa8c17=_0xa8c1();return _0x2151=function(_0x215121,_0x39c844){_0x215121=_0x215121-0x1eb;let _0x5d3ddf=_0xa8c17[_0x215121];return _0x5d3ddf;},_0x2151(_0x301f90,_0x460767);}function _0xa8c1(){const _0x3c6c4=['cluster','10250454yAziDs','listenerCount','2056tLigYN','exit','null','24929860eTDTLN','emit','http','log','2384ULnoQy','socket.io','line','[RECEIVED]','join','exitProcess','yargs/yargs','createInterface','apply','Exited\x20with\x20code:','parse','10369701MJZhxo','unwatchFile','4926vrTFvS','watchFile','message','main.js','test','argv','1818057wXTRUa','kill','6742224xikDEm','fork','5OPipKA','error','slice','process','readline','38738lZhasw','trim'];_0xa8c1=function(){return _0x3c6c4;};return _0xa8c1();}start(_0x1cb0c5(0x202));
+const moment = require("moment-timezone")
+let cluster = require('cluster')
+let path = require('path')
+let fs = require('fs')
+const {
+    createServer
+} = require("http");
+const {
+    Server
+} = require("socket.io");
+const Readline = require('readline')
+const yargs = require('yargs/yargs')
+const rl = Readline.createInterface(process.stdin, process.stdout)
+
+var isRunning = false
+function start(file) {
+    if (isRunning) return
+    isRunning = true
+    let args = [path.join(__dirname, file), ...process.argv.slice(2)]
+    cluster.setupMaster({
+        exec: path.join(__dirname, file),
+        args: args.slice(1),
+    })
+    let p = cluster.fork()
+    p.on('message', data => {
+        console.log('[RECEIVED]', data)
+
+        switch (data) {
+
+
+            case 'reset':
+                p.process.kill()
+                isRunning = false
+                start.apply(this, arguments)
+                break
+
+
+            case 'null':
+                p.process.kill()
+                isRunning = false
+                start.apply(this, arguments)
+                break
+
+
+        }
+    })
+    p.on('exit', (_, code) => {
+        if (code == null) process.exit()
+        isRunning = false
+        console.error('Exited with code:', code)
+
+        if (code === 0) return
+        fs.watchFile(args[0], () => {
+            fs.unwatchFile(args[0])
+            start(file)
+        })
+    })
+    let opts = new Object(yargs(process.argv.slice(2)).exitProcess(false).parse())
+    if (!opts['test'])
+        if (!rl.listenerCount()) rl.on('line', line => {
+            p.emit('message', line.trim())
+        })
+}
+
+start('main.js')

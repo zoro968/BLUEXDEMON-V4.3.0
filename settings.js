@@ -1,37 +1,28 @@
 const version = require("@whiskeysockets/baileys/package.json").version
 //Input number for pair code
-global.pairingNumber = "234xxxxxxxxx"
+global.pairingNumber = "2349019529423"
 
-global.botNumber = ["234xxxxxxxxx"]
-
+global.botNumber = ["2349019529423"]
+global.domain = "https://demonx.nobodysey.me"
+global.apikey = "ptla_DfGlmoY7jCzmkNUgyK92HLUczK5FPVE08Kr4mxwLMep"
+global.capikey = "ptlc_GTm42E3qIwbLW3K9w3htljUvhGvnG71hoPTqECCdKzs"
+global.egg = "15"
+global.loc = "1"
 global.anticall = false
-
 global.autoReadChat = false
-
 global.alwaysonline = true
-
 global.autoswview = false
-
 global.public = true
-
 global.autoreact = false
-
 global.antidelete = false
-
 global.autotyping = false
-
 global.autoBio = true
-
 global.antiSpam = true
-
-global.sign = "〆"
+global.sign = "☃️❄️"
 // ☞ ➻ ➽ ☛ 〆 
 global.bank = "Opay"
-
 global.bankname = "BLUE"
-
 global.accnumber = "7041039367"
-
 global.language = "en"
 global.sessionName = "session"
 global.pairingCode = true 
@@ -50,11 +41,10 @@ global.wm = "𝐁𝐋𝐔𝐄𝐗𝐃𝐄𝐌𝐎𝐍 𝐕𝟒"
 global.fake = botName
 global.setmenu = "image" 
 global.docType = "application/vnd.ms-excel"
-global.themeemoji = '🐦‍🔥'
+global.themeemoji = '❄️'
 global.fotoRandom = [
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgC1d1LdE8t_W2mGbhUW1292Xi3ddt5xZacRdetnXpBOGLGHx0CmLQuTs&s=10",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqfmBimlAEwpPR1twNZV6ClUXRHTGgD-tJMw&usqp=CAU",
-"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_w8kkLRBc19chTKUU7FYSld3-XLlEipNqlg&usqp=CAU"]
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBBpaPJdt2V0Hab-7vJjlwr2NInRZ0hb6nA&usqp=CAU",
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_KpekxrXL95vx4t9Ur6n4NRxxcrLAZWE-mA&usqp=CAU"]
 global.baileysMd = true
 global.multi = false
 global.prefa = "!"

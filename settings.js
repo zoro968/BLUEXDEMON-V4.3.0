@@ -3,9 +3,9 @@ const version = require("@whiskeysockets/baileys/package.json").version
 global.pairingNumber = "2349019529423"
 
 global.botNumber = ["2349019529423"]
-global.domain = "https://demonx.nobodysey.me"
-global.apikey = "ptla_DfGlmoY7jCzmkNUgyK92HLUczK5FPVE08Kr4mxwLMep"
-global.capikey = "ptlc_GTm42E3qIwbLW3K9w3htljUvhGvnG71hoPTqECCdKzs"
+global.domain = "https://.nobodysey.me"
+global.apikey = "ptla_DfGlmoY7jCzmkNUgyK92HLUczK5FPVE08Kr4m"
+global.capikey = "ptlc_GTm42E3qIwbLW3K9w3htljUvhGvnG71hoPTqECC"
 global.egg = "15"
 global.loc = "1"
 global.anticall = false

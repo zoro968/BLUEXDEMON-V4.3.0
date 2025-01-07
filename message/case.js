@@ -3643,7 +3643,28 @@ case 'mfdl': {
                     }
                     break;
                 }
-
+case 'button':
+conn.sendMessage(m.chat, {
+text: 'Select an option',
+footer: 'RageMods',
+buttons: [
+{
+buttonId: '.test1',
+buttonText: {
+displayText: 'Test 1'
+}
+},
+{
+buttonId: '.test1',
+buttonText: {
+displayText: 'Test 1'
+}
+}
+],
+viewOnce: true,
+headerType: 6,
+}, { quoted: m })
+break
                 case 'setbio':
                 case 'setbotbio': {
                     if (!isOwner) return setReply(mess.only.owner); // Restrict access to owners only
